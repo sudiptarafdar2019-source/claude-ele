@@ -1,0 +1,10 @@
+work/seg_*.mp4
+work/segs.txt
+work/test/
+work/voice16.wav
+work/voice48.wav
+work/bed.wav
+work/final_audio.wav
+work/video_noaudio.mp4
+work/fonts/
+work/__pycache__/
