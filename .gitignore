@@ -8,3 +8,11 @@ work/final_audio.wav
 work/video_noaudio.mp4
 work/fonts/
 work/__pycache__/
+femwise/seg_*.mp4
+femwise/segs.txt
+femwise/test/
+femwise/qc/
+femwise/*.wav
+femwise/video_noaudio.mp4
+femwise/__pycache__/
+femwise/render.log
