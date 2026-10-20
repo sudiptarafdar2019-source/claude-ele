@@ -13,10 +13,10 @@ def F(name, size):
     if k not in _fc: _fc[k] = ImageFont.truetype(FD + name, size)
     return _fc[k]
 SANS, SANSB, SANSX, SANSM = 'Poppins-700.ttf', 'Poppins-800.ttf', 'Poppins-900.ttf', 'Poppins-600.ttf'
-SERIF, SERIFI = 'PlayfairDisplay-800.ttf', 'PlayfairDisplay-700i.ttf'
+SERIF, SERIFI = 'Poppins-800.ttf', 'Poppins-800.ttf'
 
-PLUM = (62, 18, 52); WINE = (128, 34, 86); ROSE = (234, 88, 138); PINK = (255, 146, 182); BLUSH = (255, 212, 226)
-CREAM = (255, 248, 244); SAGE = (118, 168, 132); CORAL = (240, 84, 96); GOLD = (244, 196, 128); WHITE = (255, 255, 255)
+PLUM = (16, 30, 70); WINE = (8, 60, 170); ROSE = (10, 98, 240); PINK = (0, 186, 255); BLUSH = (214, 236, 255)
+CREAM = (246, 250, 255); SAGE = (20, 178, 160); CORAL = (240, 80, 96); GOLD = (255, 190, 90); WHITE = (255, 255, 255)
 
 # ---------- easing ----------
 def clamp(x, a=0.0, b=1.0): return max(a, min(b, x))
@@ -134,7 +134,7 @@ def shadowed(body, mask, r, sh_a=120, blur=18, oy=12):
     im = Image.new('RGBA', (w + 2 * p, h + 2 * p), (0, 0, 0, 0))
     sh = Image.new('L', im.size, 0); sh.paste(Image.fromarray((np.asarray(mask) * (sh_a / 255)).astype(np.uint8)), (p, p + oy))
     sh = sh.filter(ImageFilter.GaussianBlur(blur))
-    shadow = Image.new('RGBA', im.size, (40, 6, 30, 255)); shadow.putalpha(sh); im.alpha_composite(shadow)
+    shadow = Image.new('RGBA', im.size, (2, 12, 40, 255)); shadow.putalpha(sh); im.alpha_composite(shadow)
     im.alpha_composite(body, (p, p))
     m2 = Image.new('L', im.size, 0); m2.paste(mask, (p, p))
     return im, m2
@@ -145,17 +145,17 @@ def chip(text, ic=None, style='cream', size=40, h=96, r=None, font=SANS, icol=No
     w = max(minw, pad_x + (d + 18 if ic else 0) + tw + pad_x)
     r = h // 2 if r is None else r
     if style == 'cream':
-        body = grad(w, h, (255, 250, 247), (255, 238, 243), a1=242, a2=242); tcol = PLUM
+        body = grad(w, h, (252, 254, 255), (232, 242, 255), a1=244, a2=244); tcol = PLUM
         icol = icol or (ROSE, PINK)
     elif style == 'rose':
-        body = grad(w, h, (246, 104, 152), (214, 62, 118), horizontal=True); tcol = WHITE
-        icol = icol or ((255, 255, 255), (255, 225, 235))
+        body = grad(w, h, (12, 86, 238), (0, 170, 255), horizontal=True); tcol = WHITE
+        icol = icol or ((255, 255, 255), (220, 240, 255))
     elif style == 'plum':
-        body = grad(w, h, (92, 28, 76), (60, 16, 50), a1=235, a2=235); tcol = WHITE
+        body = grad(w, h, (22, 42, 96), (10, 22, 58), a1=232, a2=232); tcol = WHITE
         icol = icol or (ROSE, PINK)
     elif style == 'sage':
         body = grad(w, h, (134, 186, 148), (98, 152, 116), horizontal=True); tcol = WHITE
-        icol = icol or ((255, 255, 255), (235, 255, 240))
+        icol = icol or ((255, 255, 255), (220, 255, 248))
     m = rr_mask(w, h, r)
     a = np.asarray(body.getchannel('A')).astype(np.float32) * (np.asarray(m) / 255)
     body.putalpha(Image.fromarray(a.astype(np.uint8)))
@@ -181,7 +181,7 @@ def text_sprite(txt, font, fill, shadow=150, blur=10, oy=5, pad=40, stroke=0, st
     if shadow:
         s = Image.new('L', (w, h), 0); ImageDraw.Draw(s).text((pad - bb[0], pad - bb[1] + oy), txt, font=font, fill=shadow, stroke_width=stroke)
         s = s.filter(ImageFilter.GaussianBlur(blur))
-        sl = Image.new('RGBA', (w, h), (36, 4, 26, 255)); sl.putalpha(s); im.alpha_composite(sl)
+        sl = Image.new('RGBA', (w, h), (2, 10, 34, 255)); sl.putalpha(s); im.alpha_composite(sl)
     ImageDraw.Draw(im).text((pad - bb[0], pad - bb[1]), txt, font=font, fill=fill, stroke_width=stroke, stroke_fill=stroke_fill)
     return im, (pad, pad, w - pad, h - pad)
 
@@ -193,20 +193,20 @@ def grad_text(txt, font, c1, c2, shadow=160, pad=50, stroke=0):
     im = Image.new('RGBA', (w, h), (0, 0, 0, 0))
     if shadow:
         s = m.filter(ImageFilter.GaussianBlur(12)); s = Image.fromarray((np.asarray(s) * shadow / 255).astype(np.uint8))
-        sl = Image.new('RGBA', (w, h), (40, 4, 28, 255)); sl.putalpha(s); im.alpha_composite(sl, (0, 6))
+        sl = Image.new('RGBA', (w, h), (2, 10, 34, 255)); sl.putalpha(s); im.alpha_composite(sl, (0, 6))
     im.alpha_composite(g); return im
 
 # ---------- scenes / images ----------
 BIG = 1.25
 def grade(a, k):
     lum = (a @ np.array([.299, .587, .114], np.float32))[..., None]
-    b = a * np.array([1.04, 0.995, 0.965], np.float32)            # warm
+    b = a * np.array([0.985, 1.0, 1.03], np.float32)
     sh = (1 - lum) ** 2.4
-    b = b * (1 - 0.22 * sh) + sh * 0.22 * np.array([0.20, 0.07, 0.15], np.float32)  # plum shadows
+    b = b * (1 - 0.24 * sh) + sh * 0.24 * np.array([0.03, 0.08, 0.22], np.float32)   # navy shadows
     hi = lum ** 3
-    b = b + hi * 0.05 * np.array([1.0, 0.86, 0.84], np.float32)  # rosy highlights
-    b = np.clip(b, 0, 1); b = b * b * (3 - 2 * b) * 0.22 + b * 0.78  # gentle contrast
-    sat = lum + (b - lum) * 1.04
+    b = b + hi * 0.04 * np.array([0.92, 0.97, 1.0], np.float32)                        # clean highlights
+    b = np.clip(b, 0, 1); b = b * b * (3 - 2 * b) * 0.25 + b * 0.75
+    sat = lum + (b - lum) * 1.06
     return np.clip(a * (1 - k) + sat * k, 0, 1)
 
 def make_cover(path, k=0.7):
@@ -289,9 +289,9 @@ LEAK = None
 def leak_layer(t, strength):
     yy, xx = np.mgrid[0:H // 4, 0:W // 4].astype(np.float32)
     out = np.zeros((H // 4, W // 4, 3), np.float32)
-    for cx, cy, r, col in ((0.15 + 0.5 * math.sin(t * 1.7), 0.3, 0.55, (255, 170, 120)),
-                           (0.9 - 0.3 * math.cos(t * 1.3), 0.65, 0.5, (255, 120, 170)),
-                           (0.5, 0.1 + 0.2 * math.sin(t), 0.4, (255, 220, 170))):
+    for cx, cy, r, col in ((0.15 + 0.5 * math.sin(t * 1.7), 0.3, 0.55, (60, 150, 255)),
+                           (0.9 - 0.3 * math.cos(t * 1.3), 0.65, 0.5, (0, 210, 255)),
+                           (0.5, 0.1 + 0.2 * math.sin(t), 0.4, (190, 230, 255))):
         d = ((xx / (W / 4) - cx) ** 2 + (yy / (H / 4) - cy) ** 2) / r ** 2
         out += np.exp(-d * 2.2)[..., None] * np.array(col, np.float32)
     out = cv2.resize(out, (W, H), interpolation=cv2.INTER_LINEAR)
@@ -327,7 +327,7 @@ def bg_at(t, fi):
                 c = eioc((p - 0.3) / 0.4); out = fa * (1 - c) + fb * c
                 f = math.sin(math.pi * p) ** 2
                 if k == 'flash':
-                    glow = np.array([255, 236, 236], np.float32); out = out + (glow - out) * f * 0.8
+                    glow = np.array([225, 240, 255], np.float32); out = out + (glow - out) * f * 0.8
                 else:
                     out = 255 - (255 - out) * (1 - np.clip(leak_layer(t, f * 1.1) / 255, 0, 1))
                 return np.clip(out, 0, 255).astype(np.uint8)
@@ -352,6 +352,14 @@ class El:
         if s.shake and s.shake <= t <= s.shake + 0.45:
             dx += math.sin((t - s.shake) * 70) * 14 * (1 - (t - s.shake) / 0.45)
         return a, sc, dx, dy
+
+def shine(spr, p):
+    w, h = spr.size; cx = lerp(-160, w + 160, eioc(p))
+    xs = np.arange(w, dtype=np.float32)[None, :]; ys = np.arange(h, dtype=np.float32)[:, None]
+    band = np.clip(1 - np.abs((xs - cx) + (ys - h / 2) * 0.55) / 46, 0, 1) ** 1.5 * 0.55
+    arr = np.asarray(spr).astype(np.float32); al = arr[..., 3:4] / 255
+    arr[..., :3] = arr[..., :3] + (255 - arr[..., :3]) * band[..., None] * (al > 0.9)
+    return Image.fromarray(arr.astype(np.uint8), 'RGBA')
 
 def backdrop(bg, mask, x, y, a):
     w, h = mask.size; x, y = int(round(x)), int(round(y))
@@ -381,7 +389,7 @@ def strike(t0, w_frac=1.0, col=CORAL, lw=8):
     return f
 
 # S0 hook: "PCOS hai?" + roti/chawal question chips that get struck
-hook = grad_text('PCOS hai?', F(SERIFI, 132), (255, 255, 255), (255, 214, 228))
+hook = grad_text('PCOS hai?', F(SANSX, 132), (255, 255, 255), (170, 222, 255))
 add(*plain(hook), W / 2 - hook.size[0] / 2, 1060, 0.05, 3.70, anim='pop', dur=0.5, blur=False)
 for i, (lab, t0) in enumerate((('Roti', 1.70), ('Chawal', 2.32))):
     c = chip(lab + '?', ic='q', style='cream', size=44, h=100)
@@ -389,7 +397,12 @@ for i, (lab, t0) in enumerate((('Roti', 1.70), ('Chawal', 2.32))):
     e.dyn = strike(2.94 + i * 0.14)
 
 # S1 "BILKUL NAHI!" stamp
-st_txt = grad_text('BILKUL NAHI!', F(SANSX, 112), (255, 134, 172), (220, 52, 112), stroke=0)
+def outlined(txt, font, c1, c2, sw=9):
+    base = grad_text(txt, font, (255, 255, 255), (255, 255, 255), stroke=sw)
+    top = grad_text(txt, font, c1, c2, shadow=0, pad=50 + 0)
+    ox = (base.size[0] - top.size[0]) // 2; oy = (base.size[1] - top.size[1]) // 2
+    base.alpha_composite(top, (ox, oy)); return base
+st_txt = outlined('BILKUL NAHI!', F(SANSX, 112), (40, 190, 255), (10, 80, 235))
 stamp = Image.new('RGBA', (st_txt.size[0] + 60, st_txt.size[1] + 60), (0, 0, 0, 0))
 stamp.alpha_composite(st_txt, (30, 30)); stamp = stamp.rotate(-5, resample=Image.BICUBIC, expand=False)
 add(*plain(stamp), W / 2 - stamp.size[0] / 2, 930, 4.40, 5.70, anim='stamp', dur=0.22, blur=False)
@@ -405,30 +418,30 @@ def drift(spr, t): pass
 # S3 advice bubbles
 def bubble(text, tail='left', style='cream'):
     spr, m = chip(text, style=style, size=42, h=104, font=SANSB)
-    d = ImageDraw.Draw(spr); w, h = spr.size; col = (255, 244, 246, 242) if style == 'cream' else (210, 60, 115, 255)
+    d = ImageDraw.Draw(spr); w, h = spr.size; col = (240, 246, 255, 244) if style == 'cream' else (0, 150, 255, 255)
     if tail == 'left': d.polygon([(PADS + 50, h - PADS - 6), (PADS + 30, h - PADS + 30), (PADS + 100, h - PADS - 6)], fill=col)
     else: d.polygon([(w - PADS - 50, h - PADS - 6), (w - PADS - 30, h - PADS + 30), (w - PADS - 100, h - PADS - 6)], fill=col)
     return spr, m
-addc(bubble('“Carbs band karo!”', 'left', 'rose'), 300, 250, 12.38, 15.40, anim='pop', exitdir=(-20, 0))
-addc(bubble('“Rice mat khao!”', 'right', 'rose'), 770, 400, 14.40, 15.40, anim='pop', exitdir=(20, 0))
+addc(bubble('“Carbs band karo!”', 'left', 'rose'), 320, 270, 12.38, 15.40, anim='pop', exitdir=(-20, 0))
+addc(bubble('“Rice mat khao!”', 'right', 'rose'), 770, 420, 14.40, 15.40, anim='pop', exitdir=(20, 0))
 
 # S4 the question
-q1 = grad_text('Aakhir', F(SERIFI, 92), (255, 255, 255), (255, 226, 236))
-q2 = grad_text('sach kya hai?', F(SERIF, 112), (255, 170, 198), (236, 84, 140))
+q1 = grad_text('Aakhir', F(SANSB, 88), (255, 255, 255), (210, 234, 255))
+q2 = outlined('sach kya hai?', F(SANSX, 108), (40, 190, 255), (10, 80, 235), sw=7)
 add(*plain(q1), W / 2 - q1.size[0] / 2, 1020, 16.04, 17.75, anim='up', blur=False)
 add(*plain(q2), W / 2 - q2.size[0] / 2, 1130, 16.62, 17.75, anim='pop', blur=False)
 
 # S5 nutritionist: not only WHAT
 n1 = chip('Sirf “kya” khaate ho', ic='q', style='cream', size=42, h=100)
-e = addc(n1, W / 2, 300, 20.86, 22.55, anim='up'); e.dyn = strike(22.18, col=CORAL, lw=9)
-addc(chip('Truth', ic='check', style='rose', size=34, h=80), W / 2, 180, 18.34, 22.55, anim='pop')
+e = addc(n1, W / 2, 340, 20.86, 22.55, anim='up'); e.dyn = strike(22.18, col=CORAL, lw=9)
+addc(chip('Truth', ic='check', style='rose', size=34, h=80), W / 2, 220, 18.34, 22.55, anim='pop')
 
 # S6 combination
-c6 = grad_text('Combination', F(SERIFI, 112), (255, 255, 255), (255, 206, 222))
-add(*plain(c6), W / 2 - c6.size[0] / 2, 190, 23.48, 26.40, anim='pop', blur=False)
+c6 = grad_text('Combination', F(SANSX, 110), (255, 255, 255), (150, 215, 255))
+add(*plain(c6), W / 2 - c6.size[0] / 2, 210, 23.48, 26.40, anim='pop', blur=False)
 for i, (lab, sty, t0) in enumerate((('Carbs', 'cream', 24.38), ('Protein', 'rose', 24.88), ('Fibre', 'sage', 25.40))):
-    addc(chip(lab, style=sty, size=38, h=88, font=SANSB), 200 + i * 340, 440, t0, 26.40, anim='pop')
-PLUSES = [(370, 440, 24.80), (710, 440, 25.30)]
+    addc(chip(lab, style=sty, size=38, h=88, font=SANSB), 200 + i * 340, 460, t0, 26.40, anim='pop')
+PLUSES = [(370, 460, 24.80), (710, 460, 25.30)]
 def draw_plus(ov, t):
     for x, y, t0 in PLUSES:
         if t0 <= t <= 26.7:
@@ -456,7 +469,7 @@ def dyn_portion(spr, t):
         if ww > 4: d.rounded_rectangle([x, y0 + 46, x + ww - 6, y0 + 80], 12, fill=(*col, 255))
         if q > 0.6: d.text((x + 8, y0 + 100), lab, font=F(SANS, 26), fill=(*PLUM, int(255 * clamp((q - .6) / .4))), anchor='lm')
         x += wbar * fr
-add(pb, pbm, W / 2 - pb.size[0] / 2, 120 - PADS, 34.62, 36.40, anim='up', dyn=dyn_portion)
+add(pb, pbm, W / 2 - pb.size[0] / 2, 205 - PADS, 34.62, 36.40, anim='up', dyn=dyn_portion)
 
 # S9 fibre
 fh = chip('FIBRE-RICH FOODS', ic='leaf', style='sage', size=42, h=104, font=SANSX)
@@ -465,17 +478,17 @@ FIB = [('Sprouts', 37.95, 200, 250), ('Rajma · Chana', 38.25, 560, 520), ('Oats
 FCH = {lab: chip(lab, style='cream', size=36, h=82, font=SANSB) for lab, *_ in FIB}
 
 # S10 no crash / extreme
-addc(chip('Crash dieting', ic='x', style='cream', size=44, h=104, icol=(CORAL, (255, 140, 140))), W / 2, 200, 40.38, 43.30, anim='right', exitdir=(-30, 0), shake=40.9)
-addc(chip('Extreme restrictions', ic='x', style='cream', size=44, h=104, icol=(CORAL, (255, 140, 140))), W / 2, 340, 41.78, 43.30, anim='left', exitdir=(-30, 0), shake=42.3)
+addc(chip('Crash dieting', ic='x', style='cream', size=44, h=104, icol=(CORAL, (255, 140, 140))), W / 2, 240, 40.38, 43.30, anim='right', exitdir=(-30, 0), shake=40.9)
+addc(chip('Extreme restrictions', ic='x', style='cream', size=44, h=104, icol=(CORAL, (255, 140, 140))), W / 2, 380, 41.78, 43.30, anim='left', exitdir=(-30, 0), shake=42.3)
 EXL = [(40.38, 200, 40.9), (41.78, 340, 42.3)]
 
 # S11 balanced eating
 be = chip('Balanced eating', ic='check', style='rose', size=50, h=118, font=SANSX)
-addc(be, W / 2, 230, 44.36, 45.55, anim='pop')
+addc(be, W / 2, 260, 44.36, 45.55, anim='pop')
 
 # S12 kitchen ideas
-addc(chip('PCOS-friendly Indian diet ideas', style='plum', size=38, h=96, font=SANSB), W / 2, 200, 46.86, 51.20, anim='up')
-addc(chip('Ghar ka normal khana', ic='home', style='cream', size=40, h=96), W / 2, 330, 49.68, 51.20, anim='pop')
+addc(chip('PCOS-friendly Indian diet ideas', style='plum', size=38, h=96, font=SANSB), W / 2, 240, 46.86, 51.20, anim='up')
+addc(chip('Ghar ka normal khana', ic='home', style='cream', size=40, h=96), W / 2, 370, 49.68, 51.20, anim='pop')
 
 # S13 comment + follow
 cb, cbm = chip('', style='cream', size=10, h=124, r=62, minw=920)
@@ -491,51 +504,42 @@ def dyn_comment(spr, t):
     on = prog(t, 52.75, 0.25); bx = x0 + 920 - 24 - 76
     rr = 1 + 0.18 * math.sin(math.pi * on) if on < 1 else 1
     sz = int(76 * rr)
-    spr.alpha_composite(circle_img(sz, ROSE if on > 0 else (210, 190, 200), PINK if on > 0 else (225, 210, 218)), (int(bx + 38 - sz / 2), int(y0 + 62 - sz / 2)))
+    spr.alpha_composite(circle_img(sz, ROSE if on > 0 else (190, 205, 225), PINK if on > 0 else (210, 222, 238)), (int(bx + 38 - sz / 2), int(y0 + 62 - sz / 2)))
     icon(spr, bx + 38, y0 + 62, 40, 'send')
 add(cb, cbm, 80 - PADS, 1120 - PADS, 51.58, 54.60, anim='up', dyn=dyn_comment, exitdir=(0, 0))
-fb, fbm = chip('', style='rose', size=10, h=112, r=56, minw=920)
+fb, fbm = chip('', style='cream', size=10, h=112, r=56, minw=920)
 def dyn_follow(spr, t):
     d = ImageDraw.Draw(spr); x0, y0 = PADS, PADS
-    spr.alpha_composite(logo(84, white=True), (x0 + 20, y0 + 14))
-    d.text((x0 + 124, y0 + 56), 'Femwise Health', font=F(SANSX, 40), fill=WHITE, anchor='lm')
+    spr.alpha_composite(FOLLOWLOGO, (x0 + 34, int(y0 + 56 - FOLLOWLOGO.size[1] / 2)))
     on = prog(t, 53.95, 0.3); bw = 220; bx = x0 + 920 - 24 - bw
-    col = (255, 255, 255, 255)
-    d.rounded_rectangle([bx, y0 + 22, bx + bw, y0 + 90], 34, fill=col)
-    lab = 'Following' if on >= 0.5 else 'Follow'
-    d.text((bx + bw / 2, y0 + 56), lab, font=F(SANSX, 32), fill=ROSE if on < 0.5 else SAGE, anchor='mm')
+    fol = on >= 0.5
+    g = grad(bw, 68, (12, 86, 238), (0, 170, 255), horizontal=True) if not fol else grad(bw, 68, (226, 236, 250), (226, 236, 250))
+    g.putalpha(rr_mask(bw, 68, 34)); spr.alpha_composite(g, (bx, y0 + 22))
+    d.text((bx + bw / 2, y0 + 56), 'Following' if fol else 'Follow', font=F(SANSX, 32), fill=PLUM if fol else WHITE, anchor='mm')
 add(fb, fbm, 80 - PADS, 1270 - PADS, 53.26, 54.60, anim='up', dyn=dyn_follow, exitdir=(0, 0))
 
 # S14 next reel
-addc(chip('NEXT REEL', ic='play', style='rose', size=40, h=96, font=SANSX), W / 2, 170, 55.08, 59.40, anim='pop')
-br1 = grad_text('PCOS Breakfast', F(SERIF, 100), (255, 255, 255), (255, 220, 232))
-add(*plain(br1), W / 2 - br1.size[0] / 2, 230, 57.54, 59.40, anim='up', blur=False)
-addc(chip('Kya khana chahiye?', ic='sun', style='cream', size=40, h=96, icol=(GOLD, (255, 220, 160))), W / 2, 450, 58.52, 59.40, anim='pop')
+addc(chip('NEXT REEL', ic='play', style='rose', size=40, h=96, font=SANSX), W / 2, 220, 55.08, 59.40, anim='pop')
+br1 = grad_text('PCOS Breakfast', F(SANSX, 96), (255, 255, 255), (160, 220, 255))
+add(*plain(br1), W / 2 - br1.size[0] / 2, 280, 57.54, 59.40, anim='up', blur=False)
+addc(chip('Kya khana chahiye?', ic='sun', style='cream', size=40, h=96, icol=(GOLD, (255, 220, 160))), W / 2, 500, 58.52, 59.40, anim='pop')
 
 # S15 mistakes
 addc(chip('Common mistakes', ic='warn', style='cream', size=46, h=110, icol=(CORAL, (255, 150, 140)), font=SANSX), W / 2, 1060, 60.44, 62.20, anim='pop', shake=61.15)
 addc(chip('Avoid karo!', ic='x', style='rose', size=40, h=96), W / 2, 1200, 61.12, 62.20, anim='pop')
 
 # ---------- logo ----------
-def logo(size, white=False):
-    S = size * 4; L = Image.new('RGBA', (S, S), (0, 0, 0, 0))
-    for k in range(5):
-        pet = Image.new('RGBA', (S, S), (0, 0, 0, 0))
-        g = grad(int(S * .30), int(S * .52), (255, 255, 255) if white else (255, 160, 192), (255, 220, 232) if white else (214, 58, 116))
-        m = Image.new('L', g.size, 0); ImageDraw.Draw(m).ellipse([0, 0, g.size[0] - 1, g.size[1] - 1], fill=235 if white else 225)
-        g.putalpha(m); pet.alpha_composite(g, (int(S / 2 - g.size[0] / 2), int(S * .06)))
-        L.alpha_composite(pet.rotate(k * 72 - 0, resample=Image.BICUBIC, center=(S / 2, S / 2 + S * .02)))
-    d = ImageDraw.Draw(L); r = S * .09
-    d.ellipse([S / 2 - r, S / 2 - r, S / 2 + r, S / 2 + r], fill=(*ROSE, 255) if white else (255, 246, 240, 255))
-    return L.resize((size, size), Image.LANCZOS)
-
-BRAND = Image.new('RGBA', (460, 80), (0, 0, 0, 0))
-BRAND.alpha_composite(logo(60), (0, 10))
-ImageDraw.Draw(BRAND).text((72, 40), 'Femwise Health', font=F(SANSB, 30), fill=(255, 245, 248, 235), anchor='lm')
-BRAND_SH = BRAND.getchannel('A').filter(ImageFilter.GaussianBlur(8))
-_b = Image.new('RGBA', BRAND.size, (40, 4, 28, 255)); _b.putalpha(Image.fromarray((np.asarray(BRAND_SH) * 0.6).astype(np.uint8)))
-_b.alpha_composite(BRAND); BRAND = _b
-BIGLOGO = logo(250)
+LOGO_W = Image.open(os.path.join(ROOT, 'brand', 'logo_white.png')).convert('RGBA')
+LOGO_C = Image.open(os.path.join(ROOT, 'brand', 'logo_color.png')).convert('RGBA')
+def logo_w(width, src=None):
+    src = src or LOGO_W; return src.resize((int(width), int(width * src.size[1] / src.size[0])), Image.LANCZOS)
+_lg = logo_w(250, LOGO_C)
+_cap = grad(_lg.size[0] + 48, _lg.size[1] + 30, (255, 255, 255), (236, 244, 255), a1=228, a2=228)
+_cap.putalpha(Image.fromarray((np.asarray(_cap.getchannel('A')) * (np.asarray(rr_mask(*_cap.size, (_lg.size[1] + 30) // 2)) / 255)).astype(np.uint8)))
+_cap.alpha_composite(_lg, (24, 15))
+BRAND, _ = shadowed(_cap, _cap.getchannel('A'), 20, sh_a=90, blur=14, oy=6)
+ENDLOGO = logo_w(860)
+FOLLOWLOGO = logo_w(330, LOGO_C)
 
 # ---------- dynamic full-frame draws ----------
 def label_on(ov, sc, lab_spr, ix, iy, t0, t1, t):
@@ -565,11 +569,11 @@ def draw_question_mark(ov, t):  # floating soft question marks in S4
     a = eoc(prog(t, 16.0, 0.5)) * (1 - eic(prog(t, 17.6, 0.3)))
     for i, (x, y, s) in enumerate(((180, 420, 120), (900, 330, 90), (820, 760, 70))):
         yy = y - (t - 16) * 22 + math.sin(t * 2 + i) * 8
-        sp, _ = text_sprite('?', F(SERIFI, s), (255, 214, 228, 255), shadow=0, pad=10)
+        sp, _ = text_sprite('?', F(SANSX, s), (150, 215, 255, 255), shadow=0, pad=10)
         paste(ov, with_alpha(sp, a * 0.6), x, yy)
 
 def draw_glow_ring(ov, t):  # ring burst behind stamp + balanced eating
-    for t0, cx, cy, col in ((4.40, W / 2, 1030, (255, 150, 185)), (44.36, W / 2, 230, (255, 190, 210)), (37.44, W / 2, 760, (190, 235, 200))):
+    for t0, cx, cy, col in ((4.40, W / 2, 1030, (90, 200, 255)), (44.36, W / 2, 260, (120, 210, 255)), (37.44, W / 2, 760, (120, 240, 220))):
         p = prog(t, t0, 0.7)
         if 0 < p < 1:
             r = 60 + 420 * eoc(p); a = (1 - p) ** 1.6; w = int(2 * r + 40)
@@ -599,7 +603,7 @@ def build_static():
     bot = np.clip((y - 1150) / 770, 0, 1) ** 1.5 * 175
     top = np.clip((260 - y) / 260, 0, 1) ** 1.6 * 90
     a = np.broadcast_to(np.maximum(bot, top), (H, W))
-    g = np.zeros((H, W, 4), np.uint8); g[..., 0], g[..., 1], g[..., 2] = 34, 6, 26; g[..., 3] = a.astype(np.uint8)
+    g = np.zeros((H, W, 4), np.uint8); g[..., 0], g[..., 1], g[..., 2] = 4, 14, 44; g[..., 3] = a.astype(np.uint8)
     yy, xx = np.mgrid[0:H, 0:W].astype(np.float32)
     v = ((xx - W / 2) / (W * 0.78)) ** 2 + ((yy - H / 2) / (H * 0.74)) ** 2
     vig = np.clip(1 - 0.30 * v ** 1.3, 0.55, 1).astype(np.float32)[..., None]
@@ -616,7 +620,22 @@ def soft_dot(d, col):
 prng = np.random.default_rng(7)
 PART = [dict(x=prng.uniform(0, W), y=prng.uniform(0, H), v=prng.uniform(12, 40), d=int(prng.uniform(10, 40)),
              a=prng.uniform(0.08, 0.24), ph=prng.uniform(0, 6.28), sw=prng.uniform(10, 40)) for _ in range(22)]
-for p in PART: p['spr'] = soft_dot(p['d'], (255, 205, 220))
+for p in PART: p['spr'] = soft_dot(p['d'], (170, 220, 255))
+
+_EB = None
+def end_bg(t):
+    global _EB
+    if _EB is None:
+        _EB = np.asarray(grad(W, H, (10, 34, 96), (3, 10, 34))).astype(np.float32)
+    img = _EB.copy(); h4, w4 = H // 4, W // 4
+    xs = np.linspace(0, 1, w4)[None, :]; ys = np.linspace(0, 1, h4)[:, None]
+    acc = np.zeros((h4, w4, 3), np.float32)
+    for k, (col, amp, ph, y0) in enumerate((((0, 150, 255), .06, 0, .30), ((0, 210, 255), .05, 2, .70), ((60, 110, 255), .07, 4, .52))):
+        yc = y0 + amp * np.sin(xs * 6.2 + t * 0.9 + ph) + 0.02 * np.sin(xs * 15 - t * 1.4)
+        dist = np.abs(ys - yc); acc += np.exp(-(dist / 0.018) ** 2)[..., None] * np.array(col) * 0.55 + np.exp(-(dist / 0.08) ** 2)[..., None] * np.array(col) * 0.16
+    acc = cv2.resize(acc, (W, H), interpolation=cv2.INTER_LINEAR)
+    img[..., :3] = np.clip(img[..., :3] + acc, 0, 255)
+    return Image.fromarray(img.astype(np.uint8), 'RGBA')
 
 # ---------- captions ----------
 CAPF = F(SANSX, 80)
@@ -624,16 +643,16 @@ CAP_Y = 1470
 _wc = {}
 def wsprite(txt, kw):
     k = (txt, kw)
-    if k not in _wc: _wc[k] = text_sprite(txt, CAPF, (255, 196, 216) if kw else WHITE, shadow=200, blur=11)
+    if k not in _wc: _wc[k] = text_sprite(txt, CAPF, (120, 214, 255) if kw else WHITE, shadow=210, blur=11)
     return _wc[k]
 _pc = {}
 def pill(w, h):
     k = (w, h)
     if k not in _pc:
-        g = grad(w, h, (246, 106, 154), (206, 52, 112)); g.putalpha(rr_mask(w, h, 26)); pad = 30
+        g = grad(w, h, (0, 120, 255), (0, 190, 255), horizontal=True); g.putalpha(rr_mask(w, h, 26)); pad = 30
         im = Image.new('RGBA', (w + 2 * pad, h + 2 * pad), (0, 0, 0, 0))
         glow = Image.new('L', im.size, 0); ImageDraw.Draw(glow).rounded_rectangle([pad, pad, pad + w, pad + h], 26, fill=140)
-        gl = Image.new('RGBA', im.size, (236, 70, 130, 255)); gl.putalpha(glow.filter(ImageFilter.GaussianBlur(16)))
+        gl = Image.new('RGBA', im.size, (0, 130, 255, 255)); gl.putalpha(glow.filter(ImageFilter.GaussianBlur(16)))
         im.alpha_composite(gl); im.alpha_composite(g, (pad, pad))
         hl = grad(w, h // 2, (255, 255, 255), (255, 255, 255), a1=70, a2=0)
         hm = Image.fromarray((np.asarray(rr_mask(w, h, 26))[:h // 2].astype(np.float32) * (np.asarray(hl.getchannel('A')) / 255)).astype(np.uint8))
@@ -688,6 +707,7 @@ def render(fi):
         a, sc, dx, dy = st
         spr = e.spr.copy() if e.dyn else e.spr
         if e.dyn: e.dyn(spr, t)
+        if e.blur and e.t0 + 0.15 <= t <= e.t0 + 0.85: spr = shine(spr, (t - e.t0 - 0.15) / 0.7)
         mask = e.mask
         if abs(sc - 1) > 0.005:
             nw, nh = max(1, int(spr.size[0] * sc)), max(1, int(spr.size[1] * sc))
@@ -706,33 +726,42 @@ def render(fi):
     for spr, x, y, a in states: paste(ov, with_alpha(spr, a), x, y)
     draw_tap(ov, t)
     if t < END0 + 0.3: draw_captions(ov, t)
-    ba = 0.95 * (1 - prog(t, 5.5, 0.3)) * eoc(prog(t, 0.4, 0.6))
-    if ba > 0: paste(ov, with_alpha(BRAND, ba), 50, 74)
+    ba = 0.92 * (1 - prog(t, END0 - 0.2, 0.25)) * eoc(prog(t, 0.3, 0.6))
+    if ba > 0: paste(ov, with_alpha(BRAND, ba), 30 - PADS, 34 - PADS)
     # progress bar
     pw = int(W * clamp(t / END0)); bar = ImageDraw.Draw(ov)
-    if t < END0: bar.rectangle([0, 0, W, 7], fill=(255, 255, 255, 50)); bar.rectangle([0, 0, pw, 7], fill=(*PINK, 230))
+    if t < END0: bar.rectangle([0, 0, W, 6], fill=(255, 255, 255, 45)); bar.rectangle([0, 0, pw, 6], fill=(*PINK, 235))
     if t >= END0 - 0.05:
         q = eioc(prog(t, END0 - 0.05, 0.4))
-        end = grad(W, H, (88, 26, 72), (34, 8, 30)); ov.alpha_composite(with_alpha(end, q))
-        gl = soft_dot(1000, (236, 90, 140)); ov.alpha_composite(with_alpha(gl, 0.45 * q), (40, 230))
-        lp = prog(t, END0 + 0.15, 0.55); s = 0.5 + 0.5 * eob(lp, 2.0)
+        ov.alpha_composite(with_alpha(end_bg(t), q))
+        lp = prog(t, END0 + 0.15, 0.7)
         if lp > 0:
-            lg = BIGLOGO.rotate(-30 * (1 - eoc(lp)) - (t - END0) * 5, resample=Image.BICUBIC)
-            lg = lg.resize((int(250 * s), int(250 * s)), Image.BILINEAR)
-            paste(ov, with_alpha(lg, eoc(lp * 1.5)), W / 2 - lg.size[0] / 2, 700 - lg.size[1] / 2)
-        tp = prog(t, END0 + 0.35, 0.5)
-        if tp > 0:
-            ts = grad_text('Femwise Health', F(SERIF, 104), (255, 255, 255), (255, 210, 226), shadow=0)
-            paste(ov, with_alpha(ts, eoc(tp)), W / 2 - ts.size[0] / 2, 930 - ts.size[1] / 2 + (1 - eoc(tp)) * 40)
-        tp2 = prog(t, END0 + 0.6, 0.5)
+            lg = ENDLOGO.copy(); lw, lh = lg.size
+            wipe = eioc(lp); m = np.zeros((lh, lw), np.float32)
+            xe = int(lw * wipe * 1.15); ramp = np.clip((xe - np.arange(lw)) / 80, 0, 1); m[:] = ramp
+            al = np.asarray(lg.getchannel('A')).astype(np.float32) * m
+            sp = prog(t, END0 + 0.9, 0.8)
+            if 0 < sp < 1:
+                cx = lerp(-200, lw + 200, eioc(sp)); xs = np.arange(lw)[None, :]; ys = np.arange(lh)[:, None]
+                band = np.clip(1 - np.abs((xs - cx) + (ys - lh / 2) * 0.4) / 70, 0, 1) * 0.75
+                rgb = np.asarray(lg)[..., :3].astype(np.float32); rgb = rgb + (255 - rgb) * band[..., None]
+                lg = Image.fromarray(np.dstack([rgb, al]).astype(np.uint8), 'RGBA')
+            else: lg.putalpha(Image.fromarray(al.astype(np.uint8)))
+            s2 = 0.92 + 0.08 * eoc(lp)
+            lg = lg.resize((int(lw * s2), int(lh * s2)), Image.BILINEAR)
+            glow = lg.getchannel('A').filter(ImageFilter.GaussianBlur(30)); gl = Image.new('RGBA', lg.size, (150, 210, 255, 255))
+            gl.putalpha(Image.fromarray((np.asarray(glow) * 0.55).astype(np.uint8)))
+            paste(ov, gl, W / 2 - lg.size[0] / 2, 820 - lg.size[1] / 2); paste(ov, lg, W / 2 - lg.size[0] / 2, 820 - lg.size[1] / 2)
+        tp2 = prog(t, END0 + 0.7, 0.5)
         if tp2 > 0:
-            ts, _ = text_sprite('Your hormones. Your plate. Your power.', F(SANSM, 36), (255, 205, 222), shadow=0)
-            paste(ov, with_alpha(ts, eoc(tp2)), W / 2 - ts.size[0] / 2, 1040 - ts.size[1] / 2 + (1 - eoc(tp2)) * 30)
-        tp3 = prog(t, END0 + 0.85, 0.45)
-        if tp3 > 0:
-            c, _ = chip('Comment “DIET”', ic='send', style='rose', size=40, h=100, font=SANSX)
-            s3 = 0.5 + 0.5 * eob(tp3, 2.2); c = c.resize((int(c.size[0] * s3), int(c.size[1] * s3)), Image.BILINEAR)
-            paste(ov, with_alpha(c, eoc(tp3 * 1.5)), W / 2 - c.size[0] / 2, 1210 - c.size[1] / 2)
+            ts, _ = text_sprite('Your hormones. Your plate. Your power.', F(SANSM, 38), (190, 225, 255), shadow=0)
+            paste(ov, with_alpha(ts, eoc(tp2)), W / 2 - ts.size[0] / 2, 1020 - ts.size[1] / 2 + (1 - eoc(tp2)) * 30)
+        for k, (lab, ic, sty, yy, dl) in enumerate((('Comment “DIET”', 'send', 'rose', 1190, 0.95), ('Follow for more', 'plus', 'cream', 1320, 1.15))):
+            tp3 = prog(t, END0 + dl, 0.45)
+            if tp3 > 0:
+                c, _ = chip(lab, ic=ic, style=sty, size=40, h=100, font=SANSX)
+                s3 = 0.5 + 0.5 * eob(tp3, 2.2); c = c.resize((int(c.size[0] * s3), int(c.size[1] * s3)), Image.BILINEAR)
+                paste(ov, with_alpha(c, eoc(tp3 * 1.5)), W / 2 - c.size[0] / 2, yy - c.size[1] / 2)
     out = np.asarray(ov.convert('RGB')).astype(np.float32) + GRAIN[fi % 8]
     return np.clip(out, 0, 255).astype(np.uint8)
 
