@@ -3,6 +3,8 @@ import {AbsoluteFill, Img, staticFile} from 'remotion';
 import {C, fonts, grad} from './brand';
 import {DarkBg, LightBg, Logo} from './components/Common';
 import {faceSrc} from './lib/faces';
+import {Character} from './components/Character';
+import {Scene} from './components/Scenes';
 import {ReelProps} from './types';
 
 /**
@@ -13,7 +15,7 @@ import {ReelProps} from './types';
 export const Cover: React.FC<ReelProps> = ({reel}) => {
   const cv = reel.cover ?? {title: reel.hook};
   const t = reel.template;
-  const dark = t !== 'toon' && t !== 'hands';
+  const dark = !['toon', 'hands', 'story'].includes(t);
   const fg = dark ? '#fff' : C.navy;
   const accent = dark ? C.gold : C.blue;
   const day = reel.day ? `DAY ${reel.day}` : '';
@@ -28,8 +30,15 @@ export const Cover: React.FC<ReelProps> = ({reel}) => {
     <div style={{display: 'inline-block', padding: '14px 30px', borderRadius: 999, background: dark ? 'rgba(255,255,255,0.1)' : '#EAF1FF', border: dark ? '2px solid rgba(255,255,255,0.18)' : 'none', color: dark ? C.gold : C.blue, fontFamily: fonts.body, fontWeight: 700, fontSize: 34, letterSpacing: '0.14em'}}>{cv.kicker.toUpperCase()}</div>
   );
   let hero: React.ReactNode = null;
-  if (t === 'faces' || t === 'tips') hero = <Img src={staticFile(faceSrc(cv.face ?? 'pointing-you'))} style={{height: 900, filter: 'drop-shadow(0 0 4px #fff) drop-shadow(0 40px 60px rgba(0,0,0,0.5))'}} />;
+  if (t === 'faces' || t === 'tips') hero = <Img src={staticFile(faceSrc(cv.face ?? 'pointing-you'))} style={{height: 1150, filter: 'drop-shadow(0 40px 60px rgba(0,0,0,0.5))'}} />;
   if (t === 'toon') hero = <Img src={staticFile(`img/cartoon/${cv.pose ?? 'pointing'}.png`)} style={{height: 820, filter: 'drop-shadow(0 40px 60px rgba(10,22,51,0.25))'}} />;
+  if (t === 'story') hero = (
+    <div style={{display: 'flex', alignItems: 'flex-end', gap: 0, marginBottom: 40}}>
+      <div style={{width: 340, height: 680}}><Character who="maya" gesture="phone" mood="surprised" /></div>
+      <div style={{width: 440, height: 880}}><Character who="sudip" gesture={cv.pose ?? 'point-up'} mood="excited" /></div>
+      <div style={{width: 340, height: 680}}><Character who="leo" gesture="thumbs-up" mood="happy" seed={4} /></div>
+    </div>
+  );
   if (t === 'hands') hero = <Img src={staticFile(`img/hands/${cv.hand ?? 'point-up'}.png`)} style={{height: 700, filter: 'drop-shadow(20px 40px 40px rgba(10,22,51,0.25))'}} />;
   return (
     <AbsoluteFill>
@@ -40,6 +49,11 @@ export const Cover: React.FC<ReelProps> = ({reel}) => {
         </AbsoluteFill>
       ) : dark ? (
         t === 'tips' ? <AbsoluteFill style={{background: 'linear-gradient(165deg, #0047E0 0%, #0A1F5C 45%, #071330 100%)'}} /> : <DarkBg />
+      ) : t === 'story' ? (
+        <AbsoluteFill>
+          <Scene name={(reel as any).scene ?? 'studio'} />
+          <AbsoluteFill style={{background: 'linear-gradient(180deg, rgba(255,255,255,0) 8%, rgba(255,252,246,0.94) 20%, rgba(255,252,246,0.94) 44%, rgba(255,255,255,0) 56%)'}} />
+        </AbsoluteFill>
       ) : t === 'hands' ? (
         <AbsoluteFill style={{background: 'radial-gradient(circle at 50% 30%, #FFFFFF 0%, #F3F5F9 70%, #E7EBF2 100%)'}} />
       ) : (

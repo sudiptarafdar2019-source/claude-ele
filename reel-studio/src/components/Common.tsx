@@ -1,5 +1,5 @@
 import React from 'react';
-import {AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
+import {AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from 'remotion';
 import {useAudioData, visualizeAudio} from '@remotion/media-utils';
 import {C, fonts, grad} from '../brand';
 import {ease, pop, rnd, shake} from '../lib/motion';
@@ -64,7 +64,7 @@ export const ProgressBar: React.FC<{color?: string; track?: string}> = ({color =
 };
 
 /** Name pill with a live audio waveform, like the reference reels. */
-export const NamePill: React.FC<{voice: string; dark?: boolean; label?: string; avatar?: string}> = ({voice, dark, label = 'Sudip · Orbirise', avatar = 'img/faces/01-neutral.png'}) => {
+export const NamePill: React.FC<{voice: string; dark?: boolean; label?: string; avatar?: string}> = ({voice, dark, label = 'Sudip · Orbirise', avatar = 'img/faces/01-neutral.webp'}) => {
   const f = useCurrentFrame();
   const {fps} = useVideoConfig();
   const audio = useAudioData(staticFile(voice));
@@ -89,11 +89,11 @@ export const NamePill: React.FC<{voice: string; dark?: boolean; label?: string; 
 export const HookTitle: React.FC<{text: string; hi?: string; dark?: boolean; until: number; top?: number}> = ({text, hi, dark, until, top = 300}) => {
   const f = useCurrentFrame();
   if (f > until) return null;
-  const s = pop(f, 0, 10, 0.7);
-  const out = ease(f, until - 7, until);
-  const sh = shake(f, 2, 12, 10);
+  const s = ease(f, 0, 14);
+  const out = ease(f, until - 9, until);
+  const sh = {x: 0, y: (1 - s) * 40};
   return (
-    <div style={{position: 'absolute', left: 70, right: 70, top, textAlign: 'center', transform: `translate(${sh.x}px, ${sh.y + out * -60}px) scale(${0.6 + 0.4 * s})`, opacity: 1 - out}}>
+    <div style={{position: 'absolute', left: 70, right: 70, top, textAlign: 'center', transform: `translate(${sh.x}px, ${sh.y + out * -60}px) scale(${0.92 + 0.08 * s})`, opacity: Math.min(s, 1 - out)}}>
       <div style={{fontFamily: fonts.heading, fontWeight: 800, fontSize: text.length > 26 ? 92 : 112, lineHeight: 1.02, letterSpacing: '-0.03em', color: dark ? '#fff' : C.navy, textShadow: dark ? '0 10px 40px rgba(0,0,0,0.5)' : 'none'}}>
         <Hi text={text} hi={hi} color={dark ? C.gold : C.blue} />
       </div>
@@ -128,9 +128,9 @@ export const EndCard: React.FC<{from: number; cta?: {text: string; sub?: string}
 export const Camera: React.FC<{cutFrame: number; index: number; children: React.ReactNode; strength?: number}> = ({cutFrame, index, children, strength = 1}) => {
   const f = useCurrentFrame();
   const t = f - cutFrame;
-  const punch = interpolate(t, [0, 7], [1.06, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
-  const push = 1 + Math.min(t, 150) * 0.00018;
-  const dx = (rnd(index + 1) - 0.5) * 16 * strength;
+  const punch = interpolate(t, [0, 12], [1.02, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp', easing: Easing.bezier(0.22, 1, 0.36, 1)});
+  const push = 1 + Math.min(t, 180) * 0.00012;
+  const dx = (rnd(index + 1) - 0.5) * 8 * strength;
   return <AbsoluteFill style={{transform: `scale(${1 + (punch * push - 1) * strength}) translateX(${dx}px)`}}>{children}</AbsoluteFill>;
 };
 

@@ -6,24 +6,26 @@ This is your video-making system for 9:16 reels (Instagram Reels, TikTok, YouTub
 
 ## 1. What you have
 
-### Five video templates
+### Six video templates
 
 | # | Template | Looks like | Best for | Sample |
 |---|---|---|---|---|
-| 1 | **Cartoon Explainer** (`toon`) | Light background, cartoon you in a card, one big keyword at the top, a phone or info card beside you | Stories and simple ideas ("the plumber who replies first") | `samples/day04-cartoon.mp4` |
-| 2 | **Face Reactions** (`faces`) | Dark navy, your real face cutout at the bottom changing expression with the tone of each line, big faded number behind | Lists, mistakes, myths, anything with attitude | `samples/day05-face-reactions.mp4` |
+| 1 | **Cartoon Story** (`story`) | Animated cartoon characters (you, Maya the business owner, Leo the customer) act out the script in a cartoon shop, office, street or home. Your character's mouth moves with your voice, everyone blinks and breathes, arms move between gestures, speech and thought bubbles | Stories and simple ideas ("the plumber who replies first") | `samples/day04-cartoon-story.mp4` |
+| 2 | **Face Reactions** (`faces`) | Dark navy, your real photo cutout changing expression with the tone of each line. It moves with your voice and gets bigger when you talk straight to camera | Lists, mistakes, myths, anything with attitude | `samples/day05-face-reactions.mp4` |
 | 3 | **Hand Explainer** (`hands`) | White board, a real hand writes the key words, circles and underlines them, and taps buttons on a phone | Tutorials and step-by-step "do this on your website" | `samples/day02-hand-explainer.mp4` |
 | 4 | **Podcast Clip** (`podcast`) | Your studio photo in a podcast frame, two camera angles, close-ups, live waveform, name lower third | Founder stories, opinions, calm talks | `samples/day08-podcast.mp4` |
 | 5 | **Quick Tips** (`tips`) | Orbit Blue background with orbit rings, big "01 / 02 / 03" steps with icons, your face reacting in the corner | "3 things to...", checklists, tools | `samples/day01-quick-tips.mp4` |
+| 6 | **Cartoon Card** (`toon`) | The older look: a Pixar-style cartoon of you in a card with a big keyword. Still works, but `story` is the better cartoon template | | |
 
 Every template has a matching **cover** (`covers/`).
 
 ### Built into every video
-- **Hook text** for the first 2.4 seconds (big, with an impact sound and a small shake).
+- **Hook text** for the first 2.4 seconds (big, fades and rises in smoothly).
 - **Animated captions**: 1 to 3 words at a time, each word pops in exactly when you say it, the spoken word is highlighted, and words you wrote in CAPS in the script get the accent colour.
 - **Caption safe area**: captions always sit between 45% and 80% of the screen height, away from the Instagram/TikTok buttons on the right and the caption text at the bottom.
-- **Cuts and motion**: a punch-in zoom on every new beat, a slow push-in, floating background orbs, and pop/slide animations on everything.
-- **Sound design**: whoosh on cuts, pop when your face or pose changes, notification pings on phone alerts, ding on checklist ticks, click on taps and countdowns, marker sounds when the hand writes, a riser and hit before the end card. Background music is mixed low under your voice and lifts at the end.
+- **Cuts and motion**: calm and smooth. A very small push-in on each new beat, a slow drift, soft fades and gentle springs (no shaking, no hard bounces).
+- **Sound design (soft)**: a soft swell at the start, a quiet swoosh on scene changes, gentle ticks and pops when things appear, one soft chime at the end. Sounds are never closer than 0.4 seconds apart, and none play on face changes. Background music sits well under your voice and lifts a little on the end card.
+- **Studio voice**: your voiceover is automatically polished before rendering (low-cut, warmth, clarity, gentle compression, de-essing and a very small room sound), then the whole mix is levelled to -14 LUFS for social media.
 - **Progress bar** across the top, **name pill** with a live voice waveform, and an **end card** with the Orbirise logo and your call to action.
 - **Orbirise branding**: Orbit Blue `#0052FF`, Midnight Navy, Sky `#19A7FF`, Solar Gold `#E8B04B` on dark, Plus Jakarta Sans headings, Instrument Serif italic accents, the official logo.
 
@@ -48,7 +50,7 @@ Claude will generate the voice in your cloned ElevenLabs voice (or use an mp3 yo
 ```
  voiceover.mp3 ──► 1. put it in public/voice/
  reel file     ──► 2. write reels/day09.json
-                   3. python scripts/transcribe.py reels/day09.json   (word timings)
+                   3. node scripts/prepare.mjs day09                    (word timings + voice polish)
                    4. node scripts/render.mjs day09                    (video + cover)
                    ──► out/day09.mp4  and  out/day09-cover.png
 ```
@@ -84,7 +86,7 @@ Copy one of the sample files in `reels/` and change it. Here is a short example:
 
 ### Step 3: timing
 ```
-python scripts/transcribe.py reels/day09.json
+node scripts/prepare.mjs day09
 ```
 This listens to your mp3 (free, runs on the computer, no upload) and writes `reels/day09.timing.json` with the start and end of every word. It prints a match score; anything above 90% is good. If it is low, the script in the reel file doesn't match what the voice actually said.
 
@@ -103,7 +105,11 @@ To preview and scrub through a reel while you edit it, run `npm run studio` and 
 | Field | Used by | What it does |
 |---|---|---|
 | `at` | all | Words where this shot starts (required) |
-| `headline`, `eyebrow` | toon, faces | Big keyword, and the small italic line above it (toon) |
+| `cast` | story | Who is on screen: `[{"who":"sudip","do":"point","mood":"happy"},{"who":"maya","do":"phone","mood":"worried"}]` (1 to 3 characters, list below) |
+| `say`, `think` | story | A short speech bubble (`say`) or thought bubble (`think`), 2 to 6 words |
+| `speaker` | story | Who lip-syncs to the voice (default `sudip`). Use `"none"` for narration with nobody talking |
+| `scene` | story | Background: `studio`, `office`, `shop`, `street`, `home` (or set `"scene"` once for the whole reel) |
+| `headline`, `eyebrow` | toon, faces, story | Big keyword, and the small italic line above it. In `faces`, a beat with no `prop` and no `headline` is a "talk to camera" moment: your face gets big |
 | `title` | tips | Big title at the top |
 | `number` | faces, tips | Big number (faces: faded number + "No. 1" badge; tips: "01 of 03" with step dots) |
 | `pose` | toon | Cartoon pose: `smile`, `thinking`, `pointing`, `shocked`, `thumbs-up`, `explaining` |
@@ -113,12 +119,14 @@ To preview and scrub through a reel while you edit it, run `npm run studio` and 
 | `shot` | podcast | Camera: `a-wide`, `a-close`, `b-wide`, `b-close` |
 | `warm` | podcast | Golden light and floating embers (festive or emotional moments) |
 | `prop` | all | The "thing" on screen (list below) |
-| `sfx` | all | Replace the cut sound, e.g. `"impact"` for a big reveal |
+| `sfx` | all | Replace the cut sound (`"swell"`, `"chime"`, `"tick"`, `"pop"`), or `"none"` for silence on that cut |
 
-### Your 28 face expressions (`face`)
-See `catalog/faces-catalog.jpg`.
+### Your face expressions (`face`)
+See `catalog/faces-catalog.jpg`. These are fresh photos made from your pictures (same navy blazer and white shirt), cut out cleanly with hair strands kept.
 
-`neutral`, `thinking`, `thumbs-up`, `confident`, `shocked`, `pointing-serious`, `fist-pump`, `explaining`, `suspicious`, `idea`, `facepalm`, `please`, `laughing`, `cool`, `curious`, `announce`, `presenting`, `pointing-you`, `skeptical`, `big-smile`, `smug`, `smart`, `relaxed`, `hmm`, `shrug`, `mind-blown`, `coffee`, `ok`
+Real photos (19): `neutral`, `thinking`, `thumbs-up`, `confident`, `shocked`, `pointing-serious`, `fist-pump`, `explaining`, `suspicious`, `idea`, `facepalm`, `please`, `laughing`, `cool`, `curious`, `announce`, `presenting`, `skeptical`, `mind-blown`
+
+These names also work and use the closest photo until their own is made: `pointing-you` → pointing-serious, `big-smile` → thumbs-up, `smug` → cool, `smart` → idea, `relaxed` → neutral, `hmm` → thinking, `shrug` → presenting, `coffee` → neutral, `ok` → thumbs-up.
 
 **Automatic tone matching** (when a beat has no `face`):
 
@@ -138,36 +146,68 @@ See `catalog/faces-catalog.jpg`.
 
 Good manual picks: "Follow / comment" → `pointing-you`; a shocking fact → `shocked` or `mind-blown`; a list item → `explaining` or `ok`; "save this" → `thumbs-up`; a joke → `laughing`; "who knows?" → `shrug`.
 
+### Cartoon characters (`story` template)
+See `catalog/cartoon-cast.png`. They are drawn in code, so they cost nothing to use and can do any of these:
+
+| Character | `who` | Look |
+|---|---|---|
+| Sudip | `sudip` | You: navy blazer, white shirt, dark swept hair. He lip-syncs to your voice |
+| Maya | `maya` | Small business owner: blue apron, gold sweater, glasses, hair bun |
+| Leo | `leo` | The customer: sky-blue hoodie, navy cap, usually on his phone |
+
+- **Gestures (`do`)**: `idle`, `wave`, `point`, `point-up`, `explain`, `thumbs-up`, `shrug`, `think`, `phone`, `cheer`, `crossed`, `present`
+- **Moods (`mood`)**: `neutral`, `happy`, `excited`, `surprised`, `worried`, `thinking`, `sad`. Leave `mood` out for Sudip and the script's tone tag picks it.
+- Characters who weren't in the last beat walk in from the side. Characters who stay move smoothly to their new spot and pose.
+- A `phone` prop sits on the right with the characters on the left. Other props sit above the characters.
+
 ### Props (`prop`)
 Icons are any name from [lucide.dev/icons](https://lucide.dev/icons) (e.g. `zap`, `bell-ring`, `calendar-days`, `wallet`).
 
 | type | Example | Sounds |
 |---|---|---|
-| `phone` + `screen: "notifications"` | `{"type":"phone","screen":"notifications","items":[{"app":"Email","title":"New enquiry","text":"Are you free Friday?"}]}` | ping per alert |
-| `phone` + `screen: "chat"` | `{"type":"phone","screen":"chat","messages":[{"from":"me","text":"Hi!"},{"from":"them","text":"Thanks!"}]}` | pop per bubble |
-| `phone` + `screen: "website"` | `{"type":"phone","screen":"website","site":{"name":"Bright Books","tag":"For restaurant owners","headline":"We help...","sub":"...","button":"Book a free call"},"highlight":"button","tap":true}` | click on tap. Extras: `highlight` (`tag`/`headline`/`button`), `tap`, `crossHeadline`, `firstScreen` |
-| `stat` | `{"type":"stat","value":"< 1 hr","label":"reply time that wins","icon":"timer"}` | soft ding |
+| `phone` + `screen: "notifications"` | `{"type":"phone","screen":"notifications","items":[{"app":"Email","title":"New enquiry","text":"Are you free Friday?"}]}` | soft pop per alert |
+| `phone` + `screen: "chat"` | `{"type":"phone","screen":"chat","messages":[{"from":"me","text":"Hi!"},{"from":"them","text":"Thanks!"}]}` | soft pop per bubble |
+| `phone` + `screen: "website"` | `{"type":"phone","screen":"website","site":{"name":"Bright Books","tag":"For restaurant owners","headline":"We help...","sub":"...","button":"Book a free call"},"highlight":"button","tap":true}` | soft tick on tap. Extras: `highlight` (`tag`/`headline`/`button`), `tap`, `crossHeadline`, `firstScreen` |
+| `stat` | `{"type":"stat","value":"< 1 hr","label":"reply time that wins","icon":"timer"}` | soft chime |
 | `card` | `{"type":"card","icon":"camera","title":"A real photo of YOU","text":"People buy from people"}` | |
 | `step` | `{"type":"step","icon":"bell-ring","title":"Reminder","text":"Sent the day before"}` | |
-| `checklist` | `{"type":"checklist","items":["Name","Email","One question"]}` (add `"preDone":3` to show all ticked, `"plain":true` for numbers instead of ticks) | ding per tick |
-| `vs` | `{"type":"vs","left":{"label":"Price","icon":"tag"},"right":{"label":"Speed","icon":"zap"},"winner":"right"}` | ding |
-| `icons` | `{"type":"icons","items":[{"icon":"trophy","label":"Replied first","win":true},{"icon":"clock","label":"Later"}]}` | pops |
-| `burn` | `{"type":"burn","text":"Welcome to our website"}` (crossed out, then burns; `"button":true` for a button) | marker + whoosh |
-| `button` | `{"type":"button","text":"Get my free quote"}` | ding |
-| `numbers` | `{"type":"numbers","items":["1","2","3","4","5"],"label":"Which one is on your site?"}` | clicks |
-| `countdown` | `{"type":"countdown","from":3}` | tick per number |
-| `chips` / `chip` | `{"type":"chips","items":["US","UK","Canada"],"icon":"heart"}` | pops |
+| `checklist` | `{"type":"checklist","items":["Name","Email","One question"]}` (add `"preDone":3` to show all ticked, `"plain":true` for numbers instead of ticks) | soft tick per item |
+| `vs` | `{"type":"vs","left":{"label":"Price","icon":"tag"},"right":{"label":"Speed","icon":"zap"},"winner":"right"}` | soft chime |
+| `icons` | `{"type":"icons","items":[{"icon":"trophy","label":"Replied first","win":true},{"icon":"clock","label":"Later"}]}` | soft pops |
+| `burn` | `{"type":"burn","text":"Welcome to our website"}` (crossed out, then burns; `"button":true` for a button) | soft swell |
+| `button` | `{"type":"button","text":"Get my free quote"}` | soft chime |
+| `numbers` | `{"type":"numbers","items":["1","2","3","4","5"],"label":"Which one is on your site?"}` | soft ticks |
+| `countdown` | `{"type":"countdown","from":3}` | soft tick per number |
+| `chips` / `chip` | `{"type":"chips","items":["US","UK","Canada"],"icon":"heart"}` | soft pops |
 | `intro` | `{"type":"intro","name":"Sudip Tarafdar","role":"Founder, Orbirise","text":"..."}` | |
 | `tiles` | four boxes; add `"broken":true` to show them disconnected | |
-| `orbit` | items circle around an Orbirise orb (connected system) | riser |
-| `flow` | 3 steps joined by arrows | swipe per step |
+| `orbit` | items circle around an Orbirise orb (connected system) | soft swell |
+| `flow` | 3 steps joined by arrows | soft tick per step |
 | `cta` | `{"type":"cta","text":"Comment FIX","icon":"message-circle"}` | |
 
+### Volume controls (`mix`)
+Add a `mix` block to any reel file:
+
+```json
+"mix": {"voice": 1, "music": 0.07, "sfx": 0.6}
+```
+
+| Setting | Default | Meaning |
+|---|---|---|
+| `voice` | `1` | Your voice. `1.2` = a bit louder, `0.9` = a bit softer |
+| `music` | `0.07` | Background music. `0` = no music, `0.04` = very quiet, `0.1` = more present |
+| `sfx` | `0.6` | All effect sounds. `0` = no effect sounds at all, `0.3` = very subtle, `1` = full |
+
+The final video is always levelled to -14 LUFS, so these only change the balance between voice, music and effects.
+
+### Voice polish (`voiceFx`)
+`"voiceFx": "studio"` (default: clear, close mic), `"warm"` (default for podcast: fuller and warmer, a little more room), `"clean"` (just levelled), `"none"` (your mp3 untouched). The polished file is made automatically in `public/voice/fx/`.
+
 ### Music (`music`)
-`music/upbeat-tech.mp3` (tips, hands), `music/playful.mp3` (cartoon, faces), `music/lofi-warm.mp3` (podcast). Change the level with `"musicVolume": 0.06` (default 0.085; podcast 0.1).
+`music/upbeat-tech.mp3` (tips, hands), `music/playful.mp3` (cartoon, faces), `music/lofi-warm.mp3` (podcast).
 
 ### Sound effects (`public/sfx/`)
-`whoosh`, `whoosh-2`, `swipe`, `swipe-2`, `click`, `click-2`, `pop`, `ding`, `ding-2`, `notify`, `notify-2`, `riser`, `riser-long`, `impact`, `impact-2`, `marker`, `marker-2`, `typing`, `typing-2`. They are placed automatically; use a beat's `sfx` only to override the cut sound.
+A small soft set: `soft-swoosh` (scene change), `soft-swell` (start and big reveals), `soft-tick` (list items, taps, countdowns), `soft-pop` and `soft-pop-2` (things appearing, chat bubbles, alerts), `soft-chime` and `soft-chime-2` (end card, stats, buttons) and a quiet `marker` (hand writing). They are placed automatically.
 
 ---
 
@@ -180,7 +220,7 @@ Each reel's `cover` block makes the thumbnail:
 ```
 
 - `title` (2 to 4 words) + `highlight` (1 to 2 words, shown big in gold or blue) + optional `after` (small italic line).
-- Picture: `face` (faces and tips templates), `pose` (cartoon), `hand` (hand explainer), studio photo (podcast).
+- Picture: `face` (faces and tips templates), `pose` (story: Sudip's gesture, with Maya and Leo beside him; toon: cartoon pose), `hand` (hand explainer), studio photo (podcast).
 - All text sits in the centre area, so it still reads when Instagram crops the cover to 4:5 or 3:4 on your grid. Upload `out/dayXX-cover.png` as the reel cover.
 
 ---
@@ -191,7 +231,7 @@ Each reel's `cover` block makes the thumbnail:
 2. **On-screen words = names of things only** (a keyword, a number, a tool, a button). The captions carry the rest.
 3. **Headlines: 1 to 4 words.** Hook: under 8 words.
 4. **Write emphasis words in CAPS in the script** ("your SPEED"). They get spoken with stress and highlighted in the captions.
-5. **Match the template to the script**: lists → Quick Tips or Face Reactions; how-to → Hand Explainer; story → Cartoon or Podcast.
+5. **Match the template to the script**: lists → Quick Tips or Face Reactions; how-to → Hand Explainer; story → Cartoon Story or Podcast.
 6. **Keep real numbers real.** Don't put stats on screen that the script can't back up.
 
 ---
@@ -210,7 +250,7 @@ You only need this if you want to render without Claude.
 
 ## 8. Costs
 
-Rendering, timing, captions, sound effects and music are free. The only per-reel cost is the ElevenLabs voice (about 900 credits for a 50-second script; generating 1 take instead of 2 halves it). Real lip-sync for the podcast template is optional (about $6.70 per minute with HeyGen Avatar IV in ElevenLabs); without it the podcast template uses camera cuts and motion on your photo. To use a lip-sync clip, save it as `public/video/dayXX.mp4` and add `"video": "video/dayXX.mp4"` inside the reel's `podcast` block.
+Rendering, timing, captions, sound effects, music and the cartoon characters are free. The only per-reel cost is the ElevenLabs voice (about 900 credits for a 50-second script; generating 1 take instead of 2 halves it). Real lip-sync for the podcast template is optional (about $6.70 per minute with HeyGen Avatar IV in ElevenLabs); without it the podcast template uses camera cuts and motion on your photo. To use a lip-sync clip, save it as `public/video/dayXX.mp4` and add `"video": "video/dayXX.mp4"` inside the reel's `podcast` block.
 
 ## 9. Folder map
 
@@ -219,10 +259,11 @@ reel-studio/
   reels/          one .json per reel (+ .timing.json made by transcribe)
   public/voice/   voiceovers          public/music/  3 music beds
   public/sfx/     sound effects        public/fonts/  brand fonts
-  public/img/faces/    28 expression cutouts     public/img/cartoon/  6 cartoon poses
+  public/img/faces/    19 expression cutouts     public/img/cartoon/  6 old cartoon poses (toon)
   public/img/hands/    4 realistic hands         public/img/podcast/  2 studio angles
   public/img/brand/    Orbirise logos
-  src/templates/  Toon, Faces, Hands, Podcast, Tips     src/Cover.tsx  covers
-  src/components/ captions, props, phone, sound          scripts/  transcribe, render, stills
+  src/templates/  Story, Faces, Hands, Podcast, Tips, Toon     src/Cover.tsx  covers
+  src/components/ Character (cartoon cast), Scenes, Speaker (your talking face),
+                  captions, props, phone, sound          scripts/  prepare, transcribe, voice-fx, render, stills
   out/            finished videos and covers
 ```

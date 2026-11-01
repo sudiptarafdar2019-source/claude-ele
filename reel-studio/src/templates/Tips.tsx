@@ -8,6 +8,8 @@ import {beatAt, HOOK_SECONDS} from '../lib/timing';
 import {faceSrc} from '../lib/faces';
 import {ease, pop} from '../lib/motion';
 import {faceAt} from './Faces';
+import {Speaker} from '../components/Speaker';
+import {voiceFile} from '../components/Sound';
 import {TemplateProps} from './types';
 
 const TipsBg: React.FC = () => {
@@ -37,7 +39,6 @@ export const Tips: React.FC<TemplateProps> = ({reel, timing, beats}) => {
   const dur = b.to - b.from;
   const hookEnd = Math.round(HOOK_SECONDS * FPS);
   const face = faceAt(beats, timing, frame);
-  const fs = pop(frame - face.since, 0, 10);
   const steps = beats.filter((x) => x.number).length;
   return (
     <AbsoluteFill>
@@ -54,25 +55,25 @@ export const Tips: React.FC<TemplateProps> = ({reel, timing, beats}) => {
           )}
         </div>
         {frame > hookEnd && b.prop && (
-          <div style={{position: 'absolute', top: b.number ? 560 : 560, left: 0, right: 0, height: 560, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{position: 'absolute', top: 500, left: 0, right: 0, height: 500, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
             <PropView prop={b.prop} f={f - 3} dur={dur} theme="dark" width={900} />
           </div>
         )}
         {/* step dots */}
         {b.number && (
-          <div style={{position: 'absolute', top: 1150, left: 0, right: 0, display: 'flex', justifyContent: 'center', gap: 16}}>
+          <div style={{position: 'absolute', top: 1250, left: 380, right: 0, display: 'flex', justifyContent: 'center', gap: 16}}>
             {Array.from({length: steps}).map((_, i) => (
               <div key={i} style={{width: i + 1 === Number(b.number) ? 60 : 18, height: 18, borderRadius: 99, background: i + 1 <= Number(b.number) ? C.gold : 'rgba(255,255,255,0.25)'}} />
             ))}
           </div>
         )}
       </Camera>
-      {/* reacting face, bottom-left */}
-      <div style={{position: 'absolute', left: -30, bottom: -30, height: 620, width: 560, display: 'flex', alignItems: 'flex-end'}}>
-        <Img src={staticFile(faceSrc(face.name))} style={{height: 600, transform: `translateY(${(1 - fs) * 60}px) scale(${0.9 + 0.1 * fs})`, transformOrigin: '50% 100%', filter: 'drop-shadow(0 0 3px #fff) drop-shadow(0 20px 30px rgba(0,0,0,0.45))'}} />
+      {/* your face, speaking, bottom-left */}
+      <div style={{position: 'absolute', left: -60, bottom: 0, width: 640, height: 900}}>
+        <Speaker face={face.name} prevFace={faceAt(beats, timing, Math.max(0, face.since - 1)).name} since={face.since} voice={voiceFile(reel)} height={700} glow="rgba(232,176,75,0.35)" />
       </div>
       <HookTitle text={reel.hook} hi={reel.hookHighlight} dark until={hookEnd} top={380} />
-      <Captions words={timing.words} y={1250} style="dark" size={76} />
+      <Captions words={timing.words} y={1110} style="dark" size={74} />
       <NamePill voice={reel.voice} dark />
       <ProgressBar />
     </AbsoluteFill>

@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "studio": "remotion studio src/index.ts",
+    "studio": "node scripts/sync-index.mjs && remotion studio src/index.ts",
     "render": "node scripts/render.mjs",
     "prepare-reel": "node scripts/prepare.mjs"
   },

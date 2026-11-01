@@ -215,7 +215,7 @@ export const PropView: React.FC<{prop: Prop; f: number; dur: number; theme: Them
       return wrap(
         <div style={{...cardBase(theme), padding: '44px 50px', width, display: 'flex', alignItems: 'center', gap: 36}}>
           <div style={{width: 190, height: 190, borderRadius: 999, overflow: 'hidden', background: grad, flexShrink: 0, border: `6px solid ${t.accent}`}}>
-            <Img src={staticFile('img/faces/20-big-smile.png')} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 8%'}} />
+            <Img src={staticFile('img/faces/03-thumbs-up.webp')} style={{width: '100%', height: '100%', objectFit: 'cover', objectPosition: '50% 12%'}} />
           </div>
           <div>
             <div style={{fontFamily: fonts.heading, fontWeight: 800, fontSize: 56, color: t.fg}}>{prop.name}</div>
@@ -314,59 +314,50 @@ const Flames: React.FC<{f: number}> = ({f}) => {
   );
 };
 
-/** Sound effects a prop makes, in frames from the start of its beat. */
+/** Soft sounds a prop makes, in frames from the start of its beat (quiet; the mix "sfx" level scales them). */
 export const propSfx = (prop: Prop | undefined, dur: number): {f: number; src: string; vol: number}[] => {
-  if (!prop) return [];
+  if (!prop || prop.sfx === 'none') return [];
   const out: {f: number; src: string; vol: number}[] = [];
+  const first = (fr: number[], src: string, vol: number) => fr.forEach((f, i) => out.push({f, src, vol: i === 0 ? vol : vol * 0.7}));
   switch (prop.type) {
     case 'phone':
-      if (prop.screen === 'notifications') notifFrames(prop, dur).forEach((f, i) => out.push({f, src: i % 2 ? 'notify-2' : 'notify', vol: 0.45}));
-      if (prop.screen === 'chat') chatFrames(prop, dur).forEach((f) => out.push({f, src: 'pop', vol: 0.35}));
-      if (prop.tap) out.push({f: tapFrame(dur), src: 'click-2', vol: 0.9});
-      if (prop.crossHeadline) out.push({f: 12, src: 'marker-2', vol: 0.5});
+      if (prop.screen === 'notifications') first(notifFrames(prop, dur), 'soft-pop-2', 0.4);
+      if (prop.screen === 'chat') first(chatFrames(prop, dur), 'soft-pop', 0.35);
+      if (prop.tap) out.push({f: tapFrame(dur), src: 'soft-tick', vol: 0.6});
       break;
     case 'checklist': {
       const n = prop.items.length;
       const fr = prop.reveal === 'all' ? itemFrames(n, dur, 4, 7) : itemFrames(n, dur, 6, 20);
-      fr.forEach((f, i) => out.push({f: prop.plain ? f : f + 4, src: prop.plain ? 'pop' : i % 2 ? 'ding-2' : 'ding', vol: prop.plain ? 0.3 : 0.32}));
+      first(fr.map((f) => (prop.plain ? f : f + 4)), 'soft-tick', 0.45);
       break;
     }
     case 'icons':
-      itemFrames(prop.items.length, dur, 4, 9).forEach((f) => out.push({f, src: 'pop', vol: 0.35}));
-      break;
     case 'chips':
-      itemFrames(prop.items.length, dur, 6, 14).forEach((f) => out.push({f, src: 'pop', vol: 0.35}));
+    case 'tiles':
+      first(itemFrames(prop.items.length, dur, 4, 12), 'soft-pop', 0.35);
       break;
     case 'numbers':
-      itemFrames(prop.items.length, dur, 4, 6).forEach((f) => out.push({f, src: 'click', vol: 0.4}));
-      break;
-    case 'tiles':
-      if (prop.broken) out.push({f: 4, src: 'impact-2', vol: 0.3});
-      else itemFrames(prop.items.length, dur, 4, 10).forEach((f) => out.push({f, src: 'pop', vol: 0.3}));
+      first(itemFrames(prop.items.length, dur, 4, 8), 'soft-tick', 0.4);
       break;
     case 'flow':
-      itemFrames(prop.items.length, dur, 4, 16).forEach((f) => out.push({f, src: 'swipe', vol: 0.45}));
+      first(itemFrames(prop.items.length, dur, 4, 16), 'soft-tick', 0.4);
       break;
-    case 'vs':
-      out.push({f: 18, src: 'ding', vol: 0.3});
-      break;
-    case 'burn': {
-      const burnStart = Math.max(26, Math.round(dur * 0.55));
-      out.push({f: 10, src: 'marker-2', vol: 0.45});
-      out.push({f: burnStart, src: 'whoosh-2', vol: 0.5});
-      break;
-    }
     case 'countdown': {
       const per = Math.max(10, Math.min(18, Math.floor((dur - 10) / prop.from)));
-      for (let k = 0; k < prop.from; k++) out.push({f: k * per, src: 'click', vol: 0.55});
+      for (let k = 0; k < prop.from; k++) out.push({f: k * per, src: 'soft-tick', vol: 0.45});
       break;
     }
+    case 'vs':
     case 'stat':
     case 'button':
-      out.push({f: 3, src: 'ding-2', vol: 0.22});
+    case 'cta':
+      out.push({f: 6, src: 'soft-chime-2', vol: 0.35});
+      break;
+    case 'burn':
+      out.push({f: Math.max(26, Math.round(dur * 0.55)), src: 'soft-swell', vol: 0.4});
       break;
     case 'orbit':
-      out.push({f: 0, src: 'riser', vol: 0.25});
+      out.push({f: 0, src: 'soft-swell', vol: 0.35});
       break;
   }
   return out;

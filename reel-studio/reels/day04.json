@@ -1,7 +1,7 @@
 {
  "id": "day04",
  "day": 4,
- "template": "toon",
+ "template": "story",
  "voice": "voice/day04.mp3",
  "music": "music/playful.mp3",
  "hook": "Enquiries but no clients?",
@@ -14,12 +14,11 @@
   "kicker": "Day 4 · Speed to lead",
   "title": "It's not your price.",
   "highlight": "It's your SPEED.",
-  "pose": "pointing"
+  "pose": "point-up"
  },
  "beats": [
   {
    "at": "You get enquiries",
-   "pose": "thinking",
    "eyebrow": "you get enquiries...",
    "headline": "But no clients?",
    "prop": {
@@ -42,11 +41,21 @@
       "text": "Can you call me back?"
      }
     ]
-   }
+   },
+   "cast": [
+    {
+     "who": "sudip",
+     "do": "explain"
+    },
+    {
+     "who": "maya",
+     "do": "phone",
+     "mood": "worried"
+    }
+   ]
   },
   {
    "at": "Here's the thing",
-   "pose": "explaining",
    "eyebrow": "it's often not your",
    "headline": "Price",
    "prop": {
@@ -60,47 +69,60 @@
      "icon": "zap"
     },
     "winner": "right"
-   }
+   },
+   "cast": [
+    {
+     "who": "sudip",
+     "do": "explain",
+     "mood": "neutral"
+    },
+    {
+     "who": "maya",
+     "do": "crossed",
+     "mood": "thinking"
+    }
+   ]
   },
   {
    "at": "It's your SPEED",
-   "pose": "pointing",
    "eyebrow": "it's your",
    "headline": "SPEED",
-   "sfx": "impact",
+   "sfx": "swell",
    "prop": {
     "type": "stat",
     "value": "SPEED",
     "label": "wins the client",
     "icon": "zap"
-   }
+   },
+   "cast": [
+    {
+     "who": "sudip",
+     "do": "point-up",
+     "mood": "excited"
+    },
+    {
+     "who": "maya",
+     "do": "idle",
+     "mood": "surprised"
+    }
+   ]
   },
   {
    "at": "Think about it",
-   "pose": "smile",
    "eyebrow": "you message",
    "headline": "3 plumbers",
-   "prop": {
-    "type": "icons",
-    "items": [
-     {
-      "icon": "wrench",
-      "label": "Plumber A"
-     },
-     {
-      "icon": "wrench",
-      "label": "Plumber B"
-     },
-     {
-      "icon": "wrench",
-      "label": "Plumber C"
-     }
-    ]
-   }
+   "scene": "street",
+   "cast": [
+    {
+     "who": "leo",
+     "do": "phone",
+     "mood": "thinking"
+    }
+   ],
+   "think": "I need a plumber..."
   },
   {
    "at": "Who gets the job",
-   "pose": "shocked",
    "eyebrow": "who gets the job?",
    "headline": "The first reply",
    "prop": {
@@ -120,11 +142,23 @@
       "label": "Next day"
      }
     ]
-   }
+   },
+   "scene": "street",
+   "cast": [
+    {
+     "who": "sudip",
+     "do": "explain",
+     "mood": "excited"
+    },
+    {
+     "who": "leo",
+     "do": "thumbs-up",
+     "mood": "happy"
+    }
+   ]
   },
   {
    "at": "Harvard Business Review",
-   "pose": "explaining",
    "eyebrow": "Harvard Business Review",
    "headline": "Reply in 1 hour",
    "prop": {
@@ -132,23 +166,31 @@
     "value": "< 1 hr",
     "label": "reply fast and you're far more likely to win",
     "icon": "timer"
-   }
+   },
+   "scene": "office",
+   "cast": [
+    {
+     "who": "sudip",
+     "do": "present",
+     "mood": "happy"
+    }
+   ]
   },
   {
    "at": "But you can't sit",
-   "pose": "thinking",
    "eyebrow": "but you can't",
    "headline": "Wait by your phone",
-   "prop": {
-    "type": "card",
-    "icon": "smartphone",
-    "title": "All day on your phone?",
-    "text": "Not realistic."
-   }
+   "cast": [
+    {
+     "who": "maya",
+     "do": "phone",
+     "mood": "sad"
+    }
+   ],
+   "think": "I can't answer all day!"
   },
   {
    "at": "So let a simple system",
-   "pose": "pointing",
    "eyebrow": "so let a",
    "headline": "System do it",
    "prop": {
@@ -156,11 +198,23 @@
     "icon": "workflow",
     "title": "Simple system",
     "text": "Works while you work"
-   }
+   },
+   "scene": "office",
+   "cast": [
+    {
+     "who": "sudip",
+     "do": "present",
+     "mood": "happy"
+    },
+    {
+     "who": "maya",
+     "do": "idle",
+     "mood": "surprised"
+    }
+   ]
   },
   {
    "at": "When someone fills in your form",
-   "pose": "explaining",
    "eyebrow": "step 1",
    "headline": "Instant email",
    "prop": {
@@ -173,11 +227,18 @@
       "text": "Pick a time that suits you → Book now"
      }
     ]
-   }
+   },
+   "scene": "street",
+   "cast": [
+    {
+     "who": "leo",
+     "do": "phone",
+     "mood": "happy"
+    }
+   ]
   },
   {
    "at": "They get a quick text",
-   "pose": "smile",
    "eyebrow": "step 2",
    "headline": "Quick text",
    "prop": {
@@ -193,11 +254,18 @@
       "text": "Wow, that was fast. Thanks!"
      }
     ]
-   }
+   },
+   "scene": "street",
+   "cast": [
+    {
+     "who": "leo",
+     "do": "phone",
+     "mood": "excited"
+    }
+   ]
   },
   {
    "at": "And YOU get an alert",
-   "pose": "pointing",
    "eyebrow": "step 3",
    "headline": "You get an alert",
    "prop": {
@@ -210,11 +278,17 @@
       "text": "Call now while they're interested"
      }
     ]
-   }
+   },
+   "cast": [
+    {
+     "who": "maya",
+     "do": "phone",
+     "mood": "excited"
+    }
+   ]
   },
   {
    "at": "You don't have to be faster",
-   "pose": "thumbs-up",
    "eyebrow": "you don't have to be faster",
    "headline": "Your system is",
    "prop": {
@@ -225,19 +299,39 @@
      "Alert for you"
     ],
     "preDone": 3
-   }
+   },
+   "cast": [
+    {
+     "who": "sudip",
+     "do": "thumbs-up",
+     "mood": "happy"
+    },
+    {
+     "who": "maya",
+     "do": "cheer",
+     "mood": "excited"
+    }
+   ]
   },
   {
    "at": "Save this",
-   "pose": "pointing",
    "eyebrow": "save this and",
    "headline": "Follow",
    "prop": {
     "type": "cta",
     "text": "Next week: the cheap tools",
     "icon": "bookmark"
-   }
+   },
+   "scene": "studio",
+   "cast": [
+    {
+     "who": "sudip",
+     "do": "point",
+     "mood": "happy"
+    }
+   ]
   }
  ],
- "script": "[curious] You get enquiries... but most of them never turn into clients. Sound familiar?\n[seriously] Here's the thing. It's often not your price. It's your SPEED.\nThink about it. When you need a plumber, you message three of them. Who gets the job? [laughs] Usually the one who replies first.\nHarvard Business Review looked into this. Businesses that reply within an hour are far more likely to win the customer.\n[sighs] But you can't sit by your phone all day. So let a simple system do it.\n[confidently] When someone fills in your form... they instantly get a friendly email with your booking link. They get a quick text saying you'll call them soon. And YOU get an alert... so you can call while they're still interested.\n[warmly] You don't have to be faster. Your system does.\nSave this... and follow. Next week, I'll show you the cheap tools that do it."
+ "script": "[curious] You get enquiries... but most of them never turn into clients. Sound familiar?\n[seriously] Here's the thing. It's often not your price. It's your SPEED.\nThink about it. When you need a plumber, you message three of them. Who gets the job? [laughs] Usually the one who replies first.\nHarvard Business Review looked into this. Businesses that reply within an hour are far more likely to win the customer.\n[sighs] But you can't sit by your phone all day. So let a simple system do it.\n[confidently] When someone fills in your form... they instantly get a friendly email with your booking link. They get a quick text saying you'll call them soon. And YOU get an alert... so you can call while they're still interested.\n[warmly] You don't have to be faster. Your system does.\nSave this... and follow. Next week, I'll show you the cheap tools that do it.",
+ "scene": "shop"
 }

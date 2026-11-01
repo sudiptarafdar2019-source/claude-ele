@@ -136,8 +136,8 @@ export const Hands: React.FC<TemplateProps> = ({reel, timing, beats}) => {
 export const handsSfx = (beats: ResolvedBeat[], hookEnd: number): Sfx[] =>
   beats.flatMap((b) => {
     const out: Sfx[] = [];
-    if (b.write && b.from + WRITE_START > hookEnd - 4) out.push({f: b.from + WRITE_START, src: 'marker', vol: 0.4});
-    if (b.draw && b.draw !== 'none') out.push({f: b.from + WRITE_START + writeLen(b) + 2, src: 'marker-2', vol: 0.4});
-    if (b.hand === 'thumbs-up') out.push({f: b.from + 14, src: 'pop', vol: 0.4});
+    if (b.write && b.from + WRITE_START > hookEnd - 4) out.push({f: b.from + WRITE_START, src: 'marker', vol: 0.3});
+    if (b.draw && b.draw !== 'none') out.push({f: b.from + WRITE_START + writeLen(b) + 2, src: 'marker', vol: 0.25});
+    if (b.hand === 'thumbs-up') out.push({f: b.from + 14, src: 'soft-pop-2', vol: 0.4});
     return out;
   });

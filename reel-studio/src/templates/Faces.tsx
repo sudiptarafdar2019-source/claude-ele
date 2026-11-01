@@ -5,6 +5,8 @@ import {Camera, DarkBg, HookTitle, NamePill, ProgressBar} from '../components/Co
 import {Captions} from '../components/Captions';
 import {PropView} from '../components/Props';
 import {Sfx} from '../components/Sound';
+import {Speaker} from '../components/Speaker';
+import {voiceFile} from '../components/Sound';
 import {beatAt, HOOK_SECONDS} from '../lib/timing';
 import {autoFace, faceSrc} from '../lib/faces';
 import {ease, pop} from '../lib/motion';
@@ -40,14 +42,17 @@ export const Faces: React.FC<TemplateProps> = ({reel, timing, beats}) => {
   const dur = b.to - b.from;
   const hookEnd = Math.round(HOOK_SECONDS * FPS);
   const face = faceAt(beats, timing, frame);
-  const ff = frame - face.since;
-  const s = pop(ff, 0, 10, 0.55);
-  const breathe = 1 + Math.sin(frame / 14) * 0.008;
+  const prevFace = faceAt(beats, timing, Math.max(0, face.since - 1)).name;
+  // "focus" = a talking-to-camera moment (no prop / headline): your face gets bigger
+  const isFocus = (x?: TemplateProps['beats'][number]) => !!x && frame > hookEnd && !x.prop && !x.headline;
+  const prevB = beats[b.index - 1];
+  const focus = isFocus(prevB) === isFocus(b) ? (isFocus(b) ? 1 : 0) : isFocus(b) ? ease(f, 0, 14) : 1 - ease(f, 0, 14);
   const big = b.number ?? (b.headline ? b.headline[0] : '');
   return (
     <AbsoluteFill>
       <DarkBg />
       <Camera cutFrame={b.from} index={b.index}>
+        <div style={{opacity: 1 - focus}}>
         {big && (
           <div style={{position: 'absolute', top: 120, left: 0, right: 0, textAlign: 'center', fontFamily: fonts.heading, fontWeight: 800, fontSize: 900, lineHeight: 1, color: 'transparent', WebkitTextStroke: '4px rgba(255,255,255,0.10)', transform: `scale(${0.9 + 0.1 * pop(f, 0)})`}}>{big}</div>
         )}
@@ -60,15 +65,15 @@ export const Faces: React.FC<TemplateProps> = ({reel, timing, beats}) => {
         {frame > hookEnd && b.number && (
           <div style={{position: 'absolute', top: 205, left: 70, padding: '10px 30px', borderRadius: 999, background: C.gold, color: C.navy, fontFamily: fonts.heading, fontWeight: 800, fontSize: 40, transform: `scale(${pop(f, 0, 9)})`}}>No. {b.number}</div>
         )}
+        </div>
       </Camera>
-      {/* face cutout */}
-      <div style={{position: 'absolute', left: 0, right: 0, bottom: -40, height: 1000, display: 'flex', justifyContent: 'center', alignItems: 'flex-end'}}>
-        <div style={{position: 'absolute', bottom: 60, width: 760, height: 760, borderRadius: 999, background: 'radial-gradient(circle, rgba(0,82,255,0.55) 0%, rgba(0,82,255,0) 68%)'}} />
-        <Img src={staticFile(faceSrc(face.name))} style={{height: 940, transform: `translateY(${(1 - s) * 90}px) scale(${(0.86 + 0.14 * s) * breathe}) rotate(${(1 - s) * -4}deg)`, transformOrigin: '50% 100%', filter: 'drop-shadow(0 0 3px rgba(255,255,255,0.9)) drop-shadow(0 0 2px #fff) drop-shadow(0 30px 40px rgba(0,0,0,0.5))'}} />
-        <div style={{position: 'absolute', bottom: 0, left: 0, right: 0, height: 180, background: 'linear-gradient(180deg, rgba(5,13,36,0), rgba(5,13,36,0.9))'}} />
+      {/* your face, speaking (bigger in focus moments) */}
+      <div style={{position: 'absolute', left: 0, right: 0, bottom: 0, height: 1920}}>
+        <Speaker face={face.name} prevFace={prevFace} since={face.since} voice={voiceFile(reel)} height={1080} focusHeight={1460} focus={focus} />
+        <div style={{position: 'absolute', bottom: 0, left: 0, right: 0, height: 220, background: 'linear-gradient(180deg, rgba(5,13,36,0), rgba(5,13,36,0.92))'}} />
       </div>
       <HookTitle text={reel.hook} hi={reel.hookHighlight} dark until={hookEnd} top={330} />
-      <Captions words={timing.words} y={860} style="dark" size={80} />
+      <Captions words={timing.words} y={Math.round(800 - 400 * focus)} style="dark" size={78} />
       <NamePill voice={reel.voice} dark />
       <ProgressBar />
     </AbsoluteFill>
