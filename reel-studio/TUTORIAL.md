@@ -2,6 +2,8 @@
 
 This is your video-making system for 9:16 reels (Instagram Reels, TikTok, YouTube Shorts, Facebook Reels). You give it a voiceover and a short "reel file", and it builds a finished, branded video plus a cover image. The motion, cuts, sound effects, music, captions and end card are all done for you.
 
+**Visual-only style:** the only text on screen is the animated captions. Everything else is explained with moving pictures (animated icons, your photo, cartoons, a drawing hand), and the picture changes every 1 to 2 seconds.
+
 ---
 
 ## 1. What you have
@@ -10,23 +12,23 @@ This is your video-making system for 9:16 reels (Instagram Reels, TikTok, YouTub
 
 | # | Template | Looks like | Best for | Sample |
 |---|---|---|---|---|
-| 1 | **Cartoon Story** (`story`) | Animated cartoon characters (you, Maya the business owner, Leo the customer) act out the script in a cartoon shop, office, street or home. Your character's mouth moves with your voice, everyone blinks and breathes, arms move between gestures, speech and thought bubbles | Stories and simple ideas ("the plumber who replies first") | `samples/day04-cartoon-story.mp4` |
-| 2 | **Face Reactions** (`faces`) | Dark navy, your real photo cutout changing expression with the tone of each line. It moves with your voice and gets bigger when you talk straight to camera | Lists, mistakes, myths, anything with attitude | `samples/day05-face-reactions.mp4` |
-| 3 | **Hand Explainer** (`hands`) | White board, a real hand writes the key words, circles and underlines them, and taps buttons on a phone | Tutorials and step-by-step "do this on your website" | `samples/day02-hand-explainer.mp4` |
-| 4 | **Podcast Clip** (`podcast`) | Your studio photo in a podcast frame, two camera angles, close-ups, live waveform, name lower third | Founder stories, opinions, calm talks | `samples/day08-podcast.mp4` |
-| 5 | **Quick Tips** (`tips`) | Orbit Blue background with orbit rings, big "01 / 02 / 03" steps with icons, your face reacting in the corner | "3 things to...", checklists, tools | `samples/day01-quick-tips.mp4` |
-| 6 | **Cartoon Card** (`toon`) | The older look: a Pixar-style cartoon of you in a card with a big keyword. Still works, but `story` is the better cartoon template | | |
+| 1 | **Cartoon Story** (`story`) | Light-skinned animated cartoon characters (you, Maya the business owner, Leo the customer) act out the script in a cartoon shop, office, street or home. Your character's mouth moves with your voice, everyone blinks and breathes, arms change gesture every shot, speech and thought bubbles show pictures (not words), and animated pictures pop up beside them | Stories and simple ideas ("the plumber who replies first") | `samples/day04-cartoon-story.mp4` |
+| 2 | **Face Reactions** (`faces`) | Dark navy, your real photo cutout changing expression with the tone of each line. Your photo slides between four positions (left, right, centre, big close-up) every 1-2 seconds, with a big animated picture beside it for what you're saying | Lists, mistakes, myths, anything with attitude | `samples/day05-face-reactions.mp4` |
+| 3 | **Hand Explainer** (`hands`) | White board, a real hand sketches a picture for each idea, then circles, underlines, ticks or crosses it, and taps buttons on a phone | Tutorials and step-by-step "do this on your website" | `samples/day02-hand-explainer.mp4` |
+| 4 | **Podcast Clip** (`podcast`) | Your studio photo in a podcast frame, the camera angle and zoom change every 1-2 seconds, live waveform, a big animated picture under the captions | Founder stories, opinions, calm talks | `samples/day08-podcast.mp4` |
+| 5 | **Quick Tips** (`tips`) | Orbit Blue background with orbit rings, your moving photo and a big animated picture for each step (same moving layout as Face Reactions, on blue) | "3 things to...", checklists, tools | `samples/day01-quick-tips.mp4` |
+| 6 | **Cartoon Card** (`toon`) | Now plays as Cartoon Story, so old reel files still work | | |
 
 Every template has a matching **cover** (`covers/`).
 
 ### Built into every video
-- **Hook text** for the first 2.4 seconds (big, fades and rises in smoothly).
+- **Pictures instead of text**: every 1.5 seconds or so (always on a word boundary) a new animated picture appears. It is picked from what you are saying at that moment ("phone" shows a phone, "money" shows cash, "Google" shows search; about 200 words are known, see `src/lib/visuals.ts`), or from the beat's `prop`. A `vs` prop shows a red cross on the loser and a trophy on the winner, a `checklist` shows green ticks. Phone beats switch between the phone screen and a picture so nothing sits still.
 - **Animated captions**: 1 to 3 words at a time, each word pops in exactly when you say it, the spoken word is highlighted, and words you wrote in CAPS in the script get the accent colour.
 - **Caption safe area**: captions always sit between 45% and 80% of the screen height, away from the Instagram/TikTok buttons on the right and the caption text at the bottom.
 - **Cuts and motion**: calm and smooth. A very small push-in on each new beat, a slow drift, soft fades and gentle springs (no shaking, no hard bounces).
 - **Sound design (soft)**: a soft swell at the start, a quiet swoosh on scene changes, gentle ticks and pops when things appear, one soft chime at the end. Sounds are never closer than 0.4 seconds apart, and none play on face changes. Background music sits well under your voice and lifts a little on the end card.
 - **Studio voice**: your voiceover is automatically polished before rendering (low-cut, warmth, clarity, gentle compression, de-essing and a very small room sound), then the whole mix is levelled to -14 LUFS for social media.
-- **Progress bar** across the top, **name pill** with a live voice waveform, and an **end card** with the Orbirise logo and your call to action.
+- **Progress bar** across the top, **name pill** with a live voice waveform, and an **end card** with the Orbirise logo and three animated follow / save / share icons.
 - **Orbirise branding**: Orbit Blue `#0052FF`, Midnight Navy, Sky `#19A7FF`, Solar Gold `#E8B04B` on dark, Plus Jakarta Sans headings, Instrument Serif italic accents, the official logo.
 
 ---
@@ -41,7 +43,7 @@ or
 
 > Make Day 13 as a Face Reactions reel and Day 14 as a Cartoon reel.
 
-Claude will generate the voice in your cloned ElevenLabs voice (or use an mp3 you upload), write the reel file, time it, render the video and cover, and send them to you. You can then ask for changes in plain words: "use the shocked face on the second line", "make the headline say 'Missed calls'", "less music".
+Claude will generate the voice in your cloned ElevenLabs voice (or use an mp3 you upload), write the reel file, time it, render the video and cover, and send them to you. You can then ask for changes in plain words: "use the shocked face on the second line", "show a phone on the second line", "less music".
 
 ---
 
@@ -82,7 +84,7 @@ Copy one of the sample files in `reels/` and change it. Here is a short example:
 
 - `script` must be the exact voice block you generated (tags included). That is how captions match the audio word for word.
 - Each **beat** is one visual "shot". `at` is the first few words of where that shot starts (copy them from the script). The shot lasts until the next beat starts. Aim for one beat every 3 to 6 seconds.
-- `hook` is the on-screen hook text; `hookHighlight` is the part shown in the accent colour.
+- `hook` and `hookHighlight` are only used for the cover now (no hook text on the video itself).
 
 ### Step 3: timing
 ```
@@ -106,19 +108,17 @@ To preview and scrub through a reel while you edit it, run `npm run studio` and 
 |---|---|---|
 | `at` | all | Words where this shot starts (required) |
 | `cast` | story | Who is on screen: `[{"who":"sudip","do":"point","mood":"happy"},{"who":"maya","do":"phone","mood":"worried"}]` (1 to 3 characters, list below) |
-| `say`, `think` | story | A short speech bubble (`say`) or thought bubble (`think`), 2 to 6 words |
+| `say`, `think` | story | Turns on a speech bubble (`say`) or thought bubble (`think`). The bubble shows the animated picture, not the words |
 | `speaker` | story | Who lip-syncs to the voice (default `sudip`). Use `"none"` for narration with nobody talking |
 | `scene` | story | Background: `studio`, `office`, `shop`, `street`, `home` (or set `"scene"` once for the whole reel) |
-| `headline`, `eyebrow` | toon, faces, story | Big keyword, and the small italic line above it. In `faces`, a beat with no `prop` and no `headline` is a "talk to camera" moment: your face gets big |
-| `title` | tips | Big title at the top |
-| `number` | faces, tips | Big number (faces: faded number + "No. 1" badge; tips: "01 of 03" with step dots) |
+| `headline`, `eyebrow`, `title`, `number` | (cover only) | No longer shown on the video (visual-only style). Safe to leave in old reel files |
 | `pose` | toon | Cartoon pose: `smile`, `thinking`, `pointing`, `shocked`, `thumbs-up`, `explaining` |
 | `face` | faces, tips | Your expression (list below). Leave it out and the tone tag picks one for you |
-| `write`, `draw` | hands | Words the hand writes, then a drawing: `underline`, `circle`, `box`, `arrow`, `check`, `cross`, `none` |
+| `write`, `draw` | hands | No longer written on screen. The hand sketches the picture for each moment and picks a circle/underline/tick/cross mark itself |
 | `hand` | hands | `thumbs-up` pops a thumbs-up hand in |
-| `shot` | podcast | Camera: `a-wide`, `a-close`, `b-wide`, `b-close` |
+| `shot` | podcast | Ignored now: the camera angle changes on its own every 1-2 seconds |
 | `warm` | podcast | Golden light and floating embers (festive or emotional moments) |
-| `prop` | all | The "thing" on screen (list below) |
+| `prop` | all | Picks the pictures for that beat (its icons come first, then pictures from your words). `phone` props show the phone screen |
 | `sfx` | all | Replace the cut sound (`"swell"`, `"chime"`, `"tick"`, `"pop"`), or `"none"` for silence on that cut |
 
 ### Your face expressions (`face`)
@@ -161,7 +161,7 @@ See `catalog/cartoon-cast.png`. They are drawn in code, so they cost nothing to 
 - A `phone` prop sits on the right with the characters on the left. Other props sit above the characters.
 
 ### Props (`prop`)
-Icons are any name from [lucide.dev/icons](https://lucide.dev/icons) (e.g. `zap`, `bell-ring`, `calendar-days`, `wallet`).
+In the visual-only style a prop is not drawn as a text card any more. It chooses the pictures for its beat: its icons are shown one after another (with ticks, crosses or a trophy where it makes sense), then pictures from your words take over. Only `phone` props are still drawn (as a phone screen), and phone beats switch between the phone and a picture. Icons are any name from [lucide.dev/icons](https://lucide.dev/icons) (e.g. `zap`, `bell-ring`, `calendar-days`, `wallet`).
 
 | type | Example | Sounds |
 |---|---|---|
@@ -228,8 +228,8 @@ Each reel's `cover` block makes the thumbnail:
 ## 6. Rules that keep reels looking pro
 
 1. **One idea per beat**, one beat every 3 to 6 seconds. More cuts = more retention, but never shorter than about 1.5 seconds.
-2. **On-screen words = names of things only** (a keyword, a number, a tool, a button). The captions carry the rest.
-3. **Headlines: 1 to 4 words.** Hook: under 8 words.
+2. **No text on screen except captions.** Explain with pictures: if a word must be seen, it goes in the captions (write it in CAPS).
+3. **Something changes every 1 to 2 seconds.** The system does this for you; to steer which picture shows, say the thing ("phone", "Google", "money") or give the beat a prop with the icons you want.
 4. **Write emphasis words in CAPS in the script** ("your SPEED"). They get spoken with stress and highlighted in the captions.
 5. **Match the template to the script**: lists → Quick Tips or Face Reactions; how-to → Hand Explainer; story → Cartoon Story or Podcast.
 6. **Keep real numbers real.** Don't put stats on screen that the script can't back up.

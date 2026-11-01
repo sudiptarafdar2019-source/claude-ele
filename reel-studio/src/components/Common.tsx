@@ -3,6 +3,7 @@ import {AbsoluteFill, Easing, Img, interpolate, staticFile, useCurrentFrame, use
 import {useAudioData, visualizeAudio} from '@remotion/media-utils';
 import {C, fonts, grad} from '../brand';
 import {ease, pop, rnd, shake} from '../lib/motion';
+import {Icon} from './Icon';
 
 /** Renders text with one phrase coloured (e.g. hookHighlight). */
 export const Hi: React.FC<{text: string; hi?: string; color: string; serif?: boolean}> = ({text, hi, color, serif}) => {
@@ -112,13 +113,17 @@ export const EndCard: React.FC<{from: number; cta?: {text: string; sub?: string}
     <AbsoluteFill style={{background: dark ? `rgba(7,19,48,${0.92 * bg})` : `rgba(255,255,255,${0.94 * bg})`, backdropFilter: `blur(${12 * bg}px)`, alignItems: 'center', justifyContent: 'center'}}>
       <div style={{transform: `scale(${s})`, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 46}}>
         <Img src={staticFile(dark ? 'img/brand/logo-white.png' : 'img/brand/logo-dark.png')} style={{width: 620}} />
-        {cta && (
-          <div style={{transform: `translateY(${(1 - s2) * 60}px)`, opacity: s2, textAlign: 'center'}}>
-            <div style={{display: 'inline-block', padding: '26px 56px', borderRadius: 999, background: dark ? C.gold : C.blue, color: dark ? C.navy : '#fff', fontFamily: fonts.heading, fontWeight: 800, fontSize: 64, boxShadow: '0 20px 60px rgba(0,0,0,0.3)'}}>{cta.text}</div>
-            {cta.sub && <div style={{marginTop: 30, fontFamily: fonts.body, fontWeight: 500, fontSize: 40, color: dark ? C.bodyDark : C.ink}}>{cta.sub}</div>}
-          </div>
-        )}
-        <div style={{fontFamily: fonts.body, fontWeight: 600, fontSize: 34, letterSpacing: '0.12em', color: dark ? C.skyText : C.blue, opacity: s2}}>ORBIRISE.COM</div>
+        {/* follow / save / share, as pictures (no text) */}
+        <div style={{display: 'flex', gap: 40, transform: `translateY(${(1 - s2) * 60}px)`, opacity: s2}}>
+          {['user-plus', 'bookmark', 'send'].map((ic, i) => {
+            const k = pop(f, 10 + i * 5, 12);
+            return (
+              <div key={ic} style={{width: 150, height: 150, borderRadius: 44, background: i === 0 ? (dark ? C.gold : C.blue) : dark ? 'rgba(255,255,255,0.12)' : '#EAF1FF', display: 'flex', alignItems: 'center', justifyContent: 'center', transform: `scale(${k}) translateY(${Math.sin((f + i * 8) / 8) * 6}px)`, boxShadow: '0 20px 50px rgba(0,0,0,0.25)'}}>
+                <Icon name={ic} size={76} color={i === 0 ? (dark ? C.navy : '#fff') : dark ? '#fff' : C.blue} stroke={2.4} />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </AbsoluteFill>
   );

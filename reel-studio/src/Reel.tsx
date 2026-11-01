@@ -12,8 +12,9 @@ import {Podcast} from './templates/Podcast';
 import {Tips} from './templates/Tips';
 import {Story} from './templates/Story';
 import {ReelProps} from './types';
+import {autoShots} from './lib/visuals';
 
-const TEMPLATES = {toon: Toon, faces: Faces, hands: Hands, podcast: Podcast, tips: Tips, story: Story};
+const TEMPLATES = {toon: Story, faces: Faces, hands: Hands, podcast: Podcast, tips: Tips, story: Story};
 
 export const Reel: React.FC<ReelProps> = ({reel, timing}) => {
   const beats = useMemo(() => resolveBeats(reel, timing), [reel, timing]);
@@ -30,7 +31,7 @@ export const Reel: React.FC<ReelProps> = ({reel, timing}) => {
       const pf = b.from + (reel.template === 'hands' ? 4 : reel.template === 'toon' || reel.template === 'story' ? 3 : 2);
       propSfx(b.prop, b.to - b.from).forEach((s) => list.push({...s, f: pf + s.f}));
     });
-    if (reel.template === 'hands') list.push(...handsSfx(beats, hookEnd));
+    if (reel.template === 'hands') list.push(...handsSfx(beats, autoShots(timing, beats, 1e6)));
     list.push({f: vEnd + 4, src: 'soft-chime', vol: 0.5});
     return dedupe(list.filter((s) => s.f < vEnd + 30));
   }, [beats, reel, timing]);

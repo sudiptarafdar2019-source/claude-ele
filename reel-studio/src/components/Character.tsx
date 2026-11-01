@@ -16,9 +16,9 @@ export type CharDef = {
 };
 
 export const CHARACTERS: Record<string, CharDef> = {
-  sudip: {name: 'Sudip', role: 'Your guide (Orbirise founder)', skin: '#C98B60', skinShade: '#A9714B', hair: '#1B120E', hairStyle: 'swoop', top: '#17295C', topShade: '#0F1D45', shirt: '#FFFFFF', pants: '#101B3B', shoes: '#15171C', beard: true, necklace: true, collar: 'blazer'},
-  maya: {name: 'Maya', role: 'Small business owner', skin: '#E6AD84', skinShade: '#C98F67', hair: '#3A2116', hairStyle: 'bun', top: '#E8B04B', topShade: '#C99332', shirt: '#FFF6E5', pants: '#26375A', shoes: '#6B3E2A', glasses: true, apron: '#0052FF', collar: 'sweater'},
-  leo: {name: 'Leo', role: 'The customer', skin: '#8E5B3C', skinShade: '#744631', hair: '#121212', hairStyle: 'cap', top: '#19A7FF', topShade: '#1187D1', shirt: '#E8F6FF', pants: '#3A3F4B', shoes: '#F4F4F4', cap: '#0A1633', collar: 'hoodie'},
+  sudip: {name: 'Sudip', role: 'Your guide (Orbirise founder)', skin: '#F2C9A5', skinShade: '#DDA982', hair: '#1B120E', hairStyle: 'swoop', top: '#17295C', topShade: '#0F1D45', shirt: '#FFFFFF', pants: '#101B3B', shoes: '#15171C', beard: true, necklace: true, collar: 'blazer'},
+  maya: {name: 'Maya', role: 'Small business owner', skin: '#FBDCC6', skinShade: '#EBB99C', hair: '#3A2116', hairStyle: 'bun', top: '#E8B04B', topShade: '#C99332', shirt: '#FFF6E5', pants: '#26375A', shoes: '#6B3E2A', glasses: true, apron: '#0052FF', collar: 'sweater'},
+  leo: {name: 'Leo', role: 'The customer', skin: '#F5D2B4', skinShade: '#E0AE8C', hair: '#4A2E1E', hairStyle: 'cap', top: '#19A7FF', topShade: '#1187D1', shirt: '#E8F6FF', pants: '#3A3F4B', shoes: '#F4F4F4', cap: '#0A1633', collar: 'hoodie'},
 };
 
 export type Mood = 'neutral' | 'happy' | 'excited' | 'surprised' | 'worried' | 'thinking' | 'sad';
