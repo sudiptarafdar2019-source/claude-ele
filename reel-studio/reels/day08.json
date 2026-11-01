@@ -1,0 +1,166 @@
+{
+ "id": "day08",
+ "day": 8,
+ "template": "podcast",
+ "voice": "voice/day08.mp3",
+ "music": "music/lofi-warm.mp3",
+ "hook": "Why I started Orbirise",
+ "hookHighlight": "Orbirise",
+ "podcast": {
+  "show": "The Orbirise Podcast",
+  "episode": "Ep. 8 · A Diwali story",
+  "name": "Sudip Tarafdar",
+  "role": "Founder, Orbirise"
+ },
+ "cta": {
+  "text": "Comment \"ME\"",
+  "sub": "and follow along this month"
+ },
+ "cover": {
+  "kicker": "The Orbirise Podcast",
+  "title": "Why I started",
+  "highlight": "Orbirise",
+  "after": "A Diwali story"
+ },
+ "beats": [
+  {
+   "at": "Today is Diwali",
+   "shot": "a-wide",
+   "prop": {
+    "type": "chip",
+    "icon": "sparkles",
+    "text": "Diwali · the festival of lights"
+   }
+  },
+  {
+   "at": "I kept seeing",
+   "shot": "b-close"
+  },
+  {
+   "at": "They pay one person",
+   "shot": "a-wide",
+   "prop": {
+    "type": "tiles",
+    "items": [
+     {
+      "icon": "globe",
+      "label": "Website"
+     },
+     {
+      "icon": "search",
+      "label": "Google"
+     },
+     {
+      "icon": "megaphone",
+      "label": "Ads"
+     },
+     {
+      "icon": "users",
+      "label": "Customer list"
+     }
+    ]
+   }
+  },
+  {
+   "at": "And none of it works together",
+   "shot": "a-close",
+   "prop": {
+    "type": "tiles",
+    "items": [
+     {
+      "icon": "globe",
+      "label": "Website"
+     },
+     {
+      "icon": "search",
+      "label": "Google"
+     },
+     {
+      "icon": "megaphone",
+      "label": "Ads"
+     },
+     {
+      "icon": "users",
+      "label": "Customer list"
+     }
+    ],
+    "broken": true
+   }
+  },
+  {
+   "at": "So I started Orbirise",
+   "shot": "b-wide",
+   "prop": {
+    "type": "orbit",
+    "items": [
+     {
+      "icon": "globe",
+      "label": "Website"
+     },
+     {
+      "icon": "search",
+      "label": "Google"
+     },
+     {
+      "icon": "megaphone",
+      "label": "Ads"
+     },
+     {
+      "icon": "users",
+      "label": "Customers"
+     }
+    ]
+   }
+  },
+  {
+   "at": "Where your website brings",
+   "shot": "b-close",
+   "prop": {
+    "type": "flow",
+    "items": [
+     {
+      "icon": "globe",
+      "label": "Website brings people in"
+     },
+     {
+      "icon": "repeat",
+      "label": "Follow-up runs itself"
+     },
+     {
+      "icon": "trending-up",
+      "label": "You grow, no burnout"
+     }
+    ]
+   }
+  },
+  {
+   "at": "Diwali is about",
+   "shot": "a-close",
+   "warm": true
+  },
+  {
+   "at": "Happy Diwali",
+   "shot": "a-wide",
+   "prop": {
+    "type": "chips",
+    "items": [
+     "US",
+     "UK",
+     "Canada",
+     "India"
+    ],
+    "icon": "heart"
+   }
+  },
+  {
+   "at": "Have you ever paid",
+   "shot": "b-close",
+   "prop": {
+    "type": "cta",
+    "text": "Comment \"ME\"",
+    "icon": "message-circle"
+   }
+  }
+ ],
+ "script": "[warmly] Today is Diwali... the festival of lights. So I want to tell you why I started Orbirise.\n[thoughtfully] I kept seeing the same problem with business owners. They pay one person for a website. Someone else for Google. Someone else for ads. And another tool for their customer list.\n[sighs] And none of it works together. Leads get lost. Money gets wasted. And the owner is left doing everything by hand.\n[confidently] So I started Orbirise to fix that. To build ONE connected system. Where your website brings people in... your follow-up happens on its own... and your business can grow without you burning out.\n[softly] Diwali is about bringing light into the dark corners. And that's what I want to do for your business. Find the gaps nobody's looking at... and fix them.\n[warmly] Happy Diwali to everyone celebrating. In the US, the UK, Canada... and back home in India.\nHave you ever paid for things that didn't work together? Comment \"ME\"... and follow along this month."
+}

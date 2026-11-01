@@ -1,0 +1,33 @@
+{
+  "name": "orbirise-reel-studio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "render": "node scripts/render.mjs",
+    "prepare-reel": "node scripts/prepare.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.539",
+    "@remotion/captions": "4.0.539",
+    "@remotion/cli": "4.0.539",
+    "@remotion/fonts": "^4.0.539",
+    "@remotion/google-fonts": "4.0.539",
+    "@remotion/layout-utils": "^4.0.539",
+    "@remotion/media-utils": "4.0.539",
+    "@remotion/noise": "4.0.539",
+    "@remotion/paths": "4.0.539",
+    "@remotion/renderer": "4.0.539",
+    "@remotion/shapes": "4.0.539",
+    "@remotion/transitions": "4.0.539",
+    "lucide-react": "^0.468.0",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.539"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.0",
+    "typescript": "5.8.3"
+  }
+}

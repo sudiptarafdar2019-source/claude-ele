@@ -1,0 +1,1094 @@
+{
+ "duration": 50.24,
+ "words": [
+  {
+   "text": "Do",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 0.0,
+   "end": 0.32
+  },
+  {
+   "text": "people",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 0.32,
+   "end": 0.62
+  },
+  {
+   "text": "visit",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 0.62,
+   "end": 0.94
+  },
+  {
+   "text": "your",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 0.94,
+   "end": 1.16
+  },
+  {
+   "text": "website...",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 1.16,
+   "end": 1.62
+  },
+  {
+   "text": "and",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 1.62,
+   "end": 2.36
+  },
+  {
+   "text": "then",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 2.36,
+   "end": 2.52
+  },
+  {
+   "text": "just",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 2.52,
+   "end": 2.74
+  },
+  {
+   "text": "leave?",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 2.74,
+   "end": 3.12
+  },
+  {
+   "text": "Here's",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 3.84,
+   "end": 4.12
+  },
+  {
+   "text": "what's",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 4.12,
+   "end": 4.34
+  },
+  {
+   "text": "happening.",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 4.34,
+   "end": 4.68
+  },
+  {
+   "text": "A",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 5.32,
+   "end": 5.34
+  },
+  {
+   "text": "new",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 5.34,
+   "end": 5.58
+  },
+  {
+   "text": "visitor",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 5.58,
+   "end": 5.88
+  },
+  {
+   "text": "gives",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 5.88,
+   "end": 6.18
+  },
+  {
+   "text": "your",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 6.18,
+   "end": 6.38
+  },
+  {
+   "text": "website",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 6.38,
+   "end": 6.78
+  },
+  {
+   "text": "about",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 6.78,
+   "end": 7.1
+  },
+  {
+   "text": "three",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 7.1,
+   "end": 7.5
+  },
+  {
+   "text": "seconds.",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 7.5,
+   "end": 8.08
+  },
+  {
+   "text": "And",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 8.52,
+   "end": 8.6
+  },
+  {
+   "text": "in",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 8.6,
+   "end": 8.74
+  },
+  {
+   "text": "those",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 8.74,
+   "end": 8.94
+  },
+  {
+   "text": "three",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 8.94,
+   "end": 9.2
+  },
+  {
+   "text": "seconds...",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 9.2,
+   "end": 9.68
+  },
+  {
+   "text": "they're",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 9.7,
+   "end": 10.2
+  },
+  {
+   "text": "asking",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 10.2,
+   "end": 10.48
+  },
+  {
+   "text": "three",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 10.48,
+   "end": 10.9
+  },
+  {
+   "text": "questions.",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 10.9,
+   "end": 11.42
+  },
+  {
+   "text": "If",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 12.04,
+   "end": 12.14
+  },
+  {
+   "text": "they",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 12.14,
+   "end": 12.28
+  },
+  {
+   "text": "can't",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 12.28,
+   "end": 12.58
+  },
+  {
+   "text": "find",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 12.58,
+   "end": 12.7
+  },
+  {
+   "text": "the",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 12.7,
+   "end": 12.84
+  },
+  {
+   "text": "answers,",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 12.84,
+   "end": 13.16
+  },
+  {
+   "text": "they're",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 13.6,
+   "end": 13.9
+  },
+  {
+   "text": "gone.",
+   "tag": "seriously",
+   "line": 1,
+   "emph": false,
+   "start": 13.9,
+   "end": 14.2
+  },
+  {
+   "text": "Question",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 15.12,
+   "end": 15.12
+  },
+  {
+   "text": "one.",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 15.12,
+   "end": 15.48
+  },
+  {
+   "text": "\"What",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 16.08,
+   "end": 16.16
+  },
+  {
+   "text": "do",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 16.16,
+   "end": 16.26
+  },
+  {
+   "text": "you",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 16.26,
+   "end": 16.36
+  },
+  {
+   "text": "do?\"",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 16.36,
+   "end": 16.62
+  },
+  {
+   "text": "So",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 17.12,
+   "end": 17.28
+  },
+  {
+   "text": "please...",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 17.28,
+   "end": 17.72
+  },
+  {
+   "text": "don't",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 17.72,
+   "end": 18.44
+  },
+  {
+   "text": "write",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 18.44,
+   "end": 18.76
+  },
+  {
+   "text": "\"Welcome",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 18.76,
+   "end": 19.18
+  },
+  {
+   "text": "to",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 19.18,
+   "end": 19.54
+  },
+  {
+   "text": "our",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 19.54,
+   "end": 19.68
+  },
+  {
+   "text": "website.\"",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 19.68,
+   "end": 20.12
+  },
+  {
+   "text": "Say",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 20.56,
+   "end": 20.78
+  },
+  {
+   "text": "it",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 20.78,
+   "end": 20.94
+  },
+  {
+   "text": "simply.",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 20.94,
+   "end": 21.3
+  },
+  {
+   "text": "\"We",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 21.84,
+   "end": 21.94
+  },
+  {
+   "text": "help",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 21.94,
+   "end": 22.16
+  },
+  {
+   "text": "restaurants",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 22.16,
+   "end": 22.58
+  },
+  {
+   "text": "in",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 22.58,
+   "end": 22.84
+  },
+  {
+   "text": "Texas",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 22.84,
+   "end": 23.12
+  },
+  {
+   "text": "with",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 23.12,
+   "end": 23.42
+  },
+  {
+   "text": "their",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 23.42,
+   "end": 23.58
+  },
+  {
+   "text": "bookkeeping.\"",
+   "tag": "seriously",
+   "line": 2,
+   "emph": false,
+   "start": 23.58,
+   "end": 24.02
+  },
+  {
+   "text": "Question",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 24.74,
+   "end": 24.82
+  },
+  {
+   "text": "two.",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 24.82,
+   "end": 25.34
+  },
+  {
+   "text": "\"Is",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 25.78,
+   "end": 25.9
+  },
+  {
+   "text": "this",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 25.9,
+   "end": 26.06
+  },
+  {
+   "text": "for",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 26.06,
+   "end": 26.28
+  },
+  {
+   "text": "me?\"",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 26.28,
+   "end": 26.5
+  },
+  {
+   "text": "Say",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 27.02,
+   "end": 27.26
+  },
+  {
+   "text": "who",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 27.26,
+   "end": 27.48
+  },
+  {
+   "text": "you",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 27.48,
+   "end": 27.64
+  },
+  {
+   "text": "help,",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 27.64,
+   "end": 27.98
+  },
+  {
+   "text": "right",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 27.98,
+   "end": 28.44
+  },
+  {
+   "text": "at",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 28.44,
+   "end": 28.6
+  },
+  {
+   "text": "the",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 28.6,
+   "end": 28.72
+  },
+  {
+   "text": "top.",
+   "tag": "seriously",
+   "line": 3,
+   "emph": false,
+   "start": 28.72,
+   "end": 29.0
+  },
+  {
+   "text": "Question",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 29.0,
+   "end": 29.78
+  },
+  {
+   "text": "three.",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 29.78,
+   "end": 30.2
+  },
+  {
+   "text": "\"What",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 30.7,
+   "end": 30.88
+  },
+  {
+   "text": "do",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 30.88,
+   "end": 30.96
+  },
+  {
+   "text": "I",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 30.96,
+   "end": 31.06
+  },
+  {
+   "text": "do",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 31.06,
+   "end": 31.2
+  },
+  {
+   "text": "next?\"",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 31.2,
+   "end": 31.56
+  },
+  {
+   "text": "Give",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 32.1,
+   "end": 32.2
+  },
+  {
+   "text": "them",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 32.2,
+   "end": 32.44
+  },
+  {
+   "text": "ONE",
+   "tag": "seriously",
+   "line": 4,
+   "emph": true,
+   "start": 32.44,
+   "end": 32.9
+  },
+  {
+   "text": "clear",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 32.9,
+   "end": 33.34
+  },
+  {
+   "text": "button.",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 33.34,
+   "end": 33.8
+  },
+  {
+   "text": "Like",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 34.16,
+   "end": 34.38
+  },
+  {
+   "text": "\"Book",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 34.38,
+   "end": 34.8
+  },
+  {
+   "text": "a",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 34.8,
+   "end": 34.96
+  },
+  {
+   "text": "free",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 34.96,
+   "end": 35.12
+  },
+  {
+   "text": "call.\"",
+   "tag": "seriously",
+   "line": 4,
+   "emph": false,
+   "start": 35.12,
+   "end": 35.42
+  },
+  {
+   "text": "Now",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 35.94,
+   "end": 36.12
+  },
+  {
+   "text": "try",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 36.12,
+   "end": 36.38
+  },
+  {
+   "text": "this.",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 36.38,
+   "end": 36.74
+  },
+  {
+   "text": "Open",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 37.22,
+   "end": 37.38
+  },
+  {
+   "text": "your",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 37.38,
+   "end": 37.58
+  },
+  {
+   "text": "homepage",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 37.58,
+   "end": 37.88
+  },
+  {
+   "text": "on",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 37.88,
+   "end": 38.16
+  },
+  {
+   "text": "your",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 38.16,
+   "end": 38.3
+  },
+  {
+   "text": "phone.",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 38.3,
+   "end": 38.6
+  },
+  {
+   "text": "Only",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 39.02,
+   "end": 39.28
+  },
+  {
+   "text": "look",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 39.28,
+   "end": 39.52
+  },
+  {
+   "text": "at",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 39.52,
+   "end": 39.66
+  },
+  {
+   "text": "the",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 39.66,
+   "end": 39.78
+  },
+  {
+   "text": "first",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 39.78,
+   "end": 40.02
+  },
+  {
+   "text": "screen.",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 40.02,
+   "end": 40.4
+  },
+  {
+   "text": "Can",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 40.92,
+   "end": 41.02
+  },
+  {
+   "text": "a",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 41.02,
+   "end": 41.14
+  },
+  {
+   "text": "stranger",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 41.14,
+   "end": 41.48
+  },
+  {
+   "text": "answer",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 41.48,
+   "end": 41.88
+  },
+  {
+   "text": "all",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 41.88,
+   "end": 42.16
+  },
+  {
+   "text": "three",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 42.16,
+   "end": 42.4
+  },
+  {
+   "text": "questions?",
+   "tag": "mischievously",
+   "line": 5,
+   "emph": false,
+   "start": 42.4,
+   "end": 42.8
+  },
+  {
+   "text": "If",
+   "tag": "softly",
+   "line": 6,
+   "emph": false,
+   "start": 43.42,
+   "end": 43.62
+  },
+  {
+   "text": "not...",
+   "tag": "softly",
+   "line": 6,
+   "emph": false,
+   "start": 43.62,
+   "end": 43.92
+  },
+  {
+   "text": "that's",
+   "tag": "softly",
+   "line": 6,
+   "emph": false,
+   "start": 44.48,
+   "end": 44.8
+  },
+  {
+   "text": "why",
+   "tag": "softly",
+   "line": 6,
+   "emph": false,
+   "start": 44.8,
+   "end": 44.94
+  },
+  {
+   "text": "people",
+   "tag": "softly",
+   "line": 6,
+   "emph": false,
+   "start": 44.94,
+   "end": 45.16
+  },
+  {
+   "text": "leave.",
+   "tag": "softly",
+   "line": 6,
+   "emph": false,
+   "start": 45.16,
+   "end": 45.64
+  },
+  {
+   "text": "Comment",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 46.26,
+   "end": 46.5
+  },
+  {
+   "text": "\"FIX\",",
+   "tag": "warmly",
+   "line": 7,
+   "emph": true,
+   "start": 46.5,
+   "end": 46.98
+  },
+  {
+   "text": "and",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 46.98,
+   "end": 47.52
+  },
+  {
+   "text": "I'll",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 47.52,
+   "end": 47.7
+  },
+  {
+   "text": "tell",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 47.7,
+   "end": 47.82
+  },
+  {
+   "text": "you",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 47.82,
+   "end": 47.98
+  },
+  {
+   "text": "the",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 47.98,
+   "end": 48.14
+  },
+  {
+   "text": "one",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 48.14,
+   "end": 48.42
+  },
+  {
+   "text": "thing",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 48.42,
+   "end": 48.68
+  },
+  {
+   "text": "I'd",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 48.68,
+   "end": 48.94
+  },
+  {
+   "text": "change",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 48.94,
+   "end": 49.16
+  },
+  {
+   "text": "on",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 49.16,
+   "end": 49.34
+  },
+  {
+   "text": "your",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 49.34,
+   "end": 49.48
+  },
+  {
+   "text": "homepage.",
+   "tag": "warmly",
+   "line": 7,
+   "emph": false,
+   "start": 49.48,
+   "end": 49.86
+  }
+ ],
+ "matched": 1.0
+}

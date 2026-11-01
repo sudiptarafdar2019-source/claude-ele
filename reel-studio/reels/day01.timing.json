@@ -1,0 +1,1222 @@
+{
+ "duration": 56.24,
+ "words": [
+  {
+   "text": "So",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 0.0,
+   "end": 0.42
+  },
+  {
+   "text": "the",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 0.42,
+   "end": 0.7
+  },
+  {
+   "text": "clocks",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 0.7,
+   "end": 1.02
+  },
+  {
+   "text": "went",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 1.02,
+   "end": 1.28
+  },
+  {
+   "text": "back",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 1.28,
+   "end": 1.66
+  },
+  {
+   "text": "last",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 1.66,
+   "end": 1.92
+  },
+  {
+   "text": "night...",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 1.92,
+   "end": 2.28
+  },
+  {
+   "text": "and",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 2.28,
+   "end": 2.84
+  },
+  {
+   "text": "we",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 2.84,
+   "end": 3.0
+  },
+  {
+   "text": "all",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 3.0,
+   "end": 3.3
+  },
+  {
+   "text": "got",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 3.3,
+   "end": 3.48
+  },
+  {
+   "text": "one",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 3.48,
+   "end": 3.82
+  },
+  {
+   "text": "extra",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 3.82,
+   "end": 4.12
+  },
+  {
+   "text": "hour.",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 4.12,
+   "end": 4.46
+  },
+  {
+   "text": "Nice,",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 5.1,
+   "end": 5.26
+  },
+  {
+   "text": "right?",
+   "tag": "curious",
+   "line": 0,
+   "emph": false,
+   "start": 5.26,
+   "end": 5.62
+  },
+  {
+   "text": "But",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 6.84,
+   "end": 7.48
+  },
+  {
+   "text": "be",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 7.48,
+   "end": 7.64
+  },
+  {
+   "text": "honest.",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 7.64,
+   "end": 7.96
+  },
+  {
+   "text": "How",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 8.44,
+   "end": 8.76
+  },
+  {
+   "text": "many",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 8.76,
+   "end": 8.96
+  },
+  {
+   "text": "hours",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 8.96,
+   "end": 9.2
+  },
+  {
+   "text": "did",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 9.2,
+   "end": 9.42
+  },
+  {
+   "text": "you",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 9.42,
+   "end": 9.72
+  },
+  {
+   "text": "lose",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 9.72,
+   "end": 9.96
+  },
+  {
+   "text": "LAST",
+   "tag": "sighs",
+   "line": 1,
+   "emph": true,
+   "start": 9.96,
+   "end": 10.24
+  },
+  {
+   "text": "week...",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 10.24,
+   "end": 10.5
+  },
+  {
+   "text": "doing",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 10.5,
+   "end": 10.96
+  },
+  {
+   "text": "the",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 10.96,
+   "end": 11.12
+  },
+  {
+   "text": "same",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 11.12,
+   "end": 11.62
+  },
+  {
+   "text": "boring",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 11.62,
+   "end": 12.0
+  },
+  {
+   "text": "jobs",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 12.0,
+   "end": 12.48
+  },
+  {
+   "text": "again",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 12.48,
+   "end": 13.04
+  },
+  {
+   "text": "and",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 13.04,
+   "end": 13.34
+  },
+  {
+   "text": "again?",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 13.34,
+   "end": 13.76
+  },
+  {
+   "text": "Replying",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 14.3,
+   "end": 14.6
+  },
+  {
+   "text": "to",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 14.6,
+   "end": 14.78
+  },
+  {
+   "text": "messages.",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 14.78,
+   "end": 15.32
+  },
+  {
+   "text": "Sending",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 15.8,
+   "end": 15.96
+  },
+  {
+   "text": "reminders.",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 15.96,
+   "end": 16.7
+  },
+  {
+   "text": "Chasing",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 17.24,
+   "end": 17.48
+  },
+  {
+   "text": "people",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 17.48,
+   "end": 17.88
+  },
+  {
+   "text": "for",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 17.88,
+   "end": 18.1
+  },
+  {
+   "text": "reviews.",
+   "tag": "sighs",
+   "line": 1,
+   "emph": false,
+   "start": 18.1,
+   "end": 18.54
+  },
+  {
+   "text": "I'm",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 19.12,
+   "end": 19.48
+  },
+  {
+   "text": "Sudip,",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 19.48,
+   "end": 19.92
+  },
+  {
+   "text": "and",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 19.92,
+   "end": 20.3
+  },
+  {
+   "text": "this",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 20.3,
+   "end": 20.58
+  },
+  {
+   "text": "month",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 20.58,
+   "end": 20.8
+  },
+  {
+   "text": "I'm",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 20.8,
+   "end": 21.22
+  },
+  {
+   "text": "posting",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 21.22,
+   "end": 21.48
+  },
+  {
+   "text": "one",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 21.48,
+   "end": 21.86
+  },
+  {
+   "text": "video",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 21.86,
+   "end": 22.18
+  },
+  {
+   "text": "every",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 22.18,
+   "end": 22.66
+  },
+  {
+   "text": "day",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 22.66,
+   "end": 22.92
+  },
+  {
+   "text": "to",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 22.92,
+   "end": 23.2
+  },
+  {
+   "text": "help",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 23.2,
+   "end": 23.42
+  },
+  {
+   "text": "small",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 23.42,
+   "end": 23.72
+  },
+  {
+   "text": "business",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 23.72,
+   "end": 24.04
+  },
+  {
+   "text": "owners",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 24.04,
+   "end": 24.3
+  },
+  {
+   "text": "get",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 24.3,
+   "end": 24.6
+  },
+  {
+   "text": "more",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 24.6,
+   "end": 24.94
+  },
+  {
+   "text": "clients...",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 24.94,
+   "end": 25.32
+  },
+  {
+   "text": "and",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 25.32,
+   "end": 25.94
+  },
+  {
+   "text": "get",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 25.94,
+   "end": 26.16
+  },
+  {
+   "text": "their",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 26.16,
+   "end": 26.36
+  },
+  {
+   "text": "time",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 26.36,
+   "end": 26.6
+  },
+  {
+   "text": "back.",
+   "tag": "warmly",
+   "line": 2,
+   "emph": false,
+   "start": 26.6,
+   "end": 26.92
+  },
+  {
+   "text": "So",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 26.92,
+   "end": 27.48
+  },
+  {
+   "text": "here",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 27.48,
+   "end": 27.68
+  },
+  {
+   "text": "are",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 27.68,
+   "end": 27.88
+  },
+  {
+   "text": "three",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 27.88,
+   "end": 28.16
+  },
+  {
+   "text": "jobs",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 28.16,
+   "end": 28.46
+  },
+  {
+   "text": "you",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 28.46,
+   "end": 28.8
+  },
+  {
+   "text": "can",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 28.8,
+   "end": 28.98
+  },
+  {
+   "text": "stop",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 28.98,
+   "end": 29.22
+  },
+  {
+   "text": "doing",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 29.22,
+   "end": 29.52
+  },
+  {
+   "text": "by",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 29.52,
+   "end": 29.82
+  },
+  {
+   "text": "hand.",
+   "tag": "confidently",
+   "line": 3,
+   "emph": false,
+   "start": 29.82,
+   "end": 30.28
+  },
+  {
+   "text": "One.",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 30.82,
+   "end": 30.96
+  },
+  {
+   "text": "When",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 31.34,
+   "end": 31.56
+  },
+  {
+   "text": "someone",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 31.56,
+   "end": 31.92
+  },
+  {
+   "text": "sends",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 31.92,
+   "end": 32.16
+  },
+  {
+   "text": "you",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 32.16,
+   "end": 32.36
+  },
+  {
+   "text": "an",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 32.36,
+   "end": 32.44
+  },
+  {
+   "text": "enquiry,",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 32.44,
+   "end": 33.18
+  },
+  {
+   "text": "they",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 33.18,
+   "end": 33.4
+  },
+  {
+   "text": "get",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 33.4,
+   "end": 33.52
+  },
+  {
+   "text": "a",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 33.52,
+   "end": 33.68
+  },
+  {
+   "text": "friendly",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 33.68,
+   "end": 33.98
+  },
+  {
+   "text": "reply",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 33.98,
+   "end": 34.44
+  },
+  {
+   "text": "straight",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 34.44,
+   "end": 34.88
+  },
+  {
+   "text": "away...",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 34.88,
+   "end": 35.24
+  },
+  {
+   "text": "even",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 35.56,
+   "end": 35.8
+  },
+  {
+   "text": "when",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 35.8,
+   "end": 36.0
+  },
+  {
+   "text": "you're",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 36.0,
+   "end": 36.18
+  },
+  {
+   "text": "busy.",
+   "tag": "confidently",
+   "line": 4,
+   "emph": false,
+   "start": 36.18,
+   "end": 36.46
+  },
+  {
+   "text": "Two.",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 36.82,
+   "end": 37.18
+  },
+  {
+   "text": "Every",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 37.56,
+   "end": 37.9
+  },
+  {
+   "text": "client",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 37.9,
+   "end": 38.22
+  },
+  {
+   "text": "gets",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 38.22,
+   "end": 38.46
+  },
+  {
+   "text": "a",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 38.46,
+   "end": 38.62
+  },
+  {
+   "text": "reminder",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 38.62,
+   "end": 38.92
+  },
+  {
+   "text": "the",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 38.92,
+   "end": 39.26
+  },
+  {
+   "text": "day",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 39.26,
+   "end": 39.52
+  },
+  {
+   "text": "before",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 39.52,
+   "end": 39.86
+  },
+  {
+   "text": "their",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 39.86,
+   "end": 40.06
+  },
+  {
+   "text": "appointment.",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 40.06,
+   "end": 40.52
+  },
+  {
+   "text": "Fewer",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 41.08,
+   "end": 41.32
+  },
+  {
+   "text": "no-shows.",
+   "tag": "confidently",
+   "line": 5,
+   "emph": false,
+   "start": 41.32,
+   "end": 42.2
+  },
+  {
+   "text": "Three.",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 42.2,
+   "end": 42.6
+  },
+  {
+   "text": "When",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 43.02,
+   "end": 43.16
+  },
+  {
+   "text": "a",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 43.16,
+   "end": 43.28
+  },
+  {
+   "text": "job's",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 43.28,
+   "end": 43.6
+  },
+  {
+   "text": "finished...",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 43.6,
+   "end": 43.98
+  },
+  {
+   "text": "a",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 44.26,
+   "end": 44.4
+  },
+  {
+   "text": "review",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 44.4,
+   "end": 44.7
+  },
+  {
+   "text": "request",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 44.7,
+   "end": 45.1
+  },
+  {
+   "text": "goes",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 45.1,
+   "end": 45.42
+  },
+  {
+   "text": "out",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 45.42,
+   "end": 45.66
+  },
+  {
+   "text": "on",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 45.66,
+   "end": 45.88
+  },
+  {
+   "text": "its",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 45.88,
+   "end": 46.02
+  },
+  {
+   "text": "own.",
+   "tag": "confidently",
+   "line": 6,
+   "emph": false,
+   "start": 46.02,
+   "end": 46.32
+  },
+  {
+   "text": "Set",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 46.76,
+   "end": 46.9
+  },
+  {
+   "text": "these",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 46.9,
+   "end": 47.08
+  },
+  {
+   "text": "up",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 47.08,
+   "end": 47.26
+  },
+  {
+   "text": "once,",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 47.26,
+   "end": 47.54
+  },
+  {
+   "text": "and",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 47.54,
+   "end": 47.92
+  },
+  {
+   "text": "they",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 47.92,
+   "end": 48.04
+  },
+  {
+   "text": "work",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 48.04,
+   "end": 48.28
+  },
+  {
+   "text": "for",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 48.28,
+   "end": 48.46
+  },
+  {
+   "text": "you",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 48.46,
+   "end": 48.64
+  },
+  {
+   "text": "every",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 48.64,
+   "end": 49.08
+  },
+  {
+   "text": "single",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 49.08,
+   "end": 49.44
+  },
+  {
+   "text": "day.",
+   "tag": "excited",
+   "line": 7,
+   "emph": false,
+   "start": 49.44,
+   "end": 49.8
+  },
+  {
+   "text": "Follow",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 50.28,
+   "end": 50.44
+  },
+  {
+   "text": "me",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 50.44,
+   "end": 50.68
+  },
+  {
+   "text": "for",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 50.68,
+   "end": 50.86
+  },
+  {
+   "text": "the",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 50.86,
+   "end": 51.0
+  },
+  {
+   "text": "next",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 51.0,
+   "end": 51.24
+  },
+  {
+   "text": "thirty",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 51.24,
+   "end": 51.52
+  },
+  {
+   "text": "days.",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 51.52,
+   "end": 51.9
+  },
+  {
+   "text": "Tomorrow,",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 52.34,
+   "end": 52.64
+  },
+  {
+   "text": "I'm",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 52.98,
+   "end": 53.24
+  },
+  {
+   "text": "going",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 53.24,
+   "end": 53.36
+  },
+  {
+   "text": "to",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 53.36,
+   "end": 53.54
+  },
+  {
+   "text": "test",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 53.54,
+   "end": 53.72
+  },
+  {
+   "text": "your",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 53.72,
+   "end": 54.06
+  },
+  {
+   "text": "website...",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 54.06,
+   "end": 54.46
+  },
+  {
+   "text": "in",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 54.46,
+   "end": 55.02
+  },
+  {
+   "text": "three",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 55.02,
+   "end": 55.38
+  },
+  {
+   "text": "seconds.",
+   "tag": "excited",
+   "line": 8,
+   "emph": false,
+   "start": 55.38,
+   "end": 55.78
+  }
+ ],
+ "matched": 0.97
+}

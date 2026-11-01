@@ -1,0 +1,11 @@
+import r0 from '../reels/day01.json';
+import t0 from '../reels/day01.timing.json';
+import r1 from '../reels/day02.json';
+import t1 from '../reels/day02.timing.json';
+import r2 from '../reels/day04.json';
+import t2 from '../reels/day04.timing.json';
+import r3 from '../reels/day05.json';
+import t3 from '../reels/day05.timing.json';
+import r4 from '../reels/day08.json';
+import t4 from '../reels/day08.timing.json';
+export const REELS: {id: string; reel: any; timing: any}[] = [{id: 'day01', reel: r0, timing: t0}, {id: 'day02', reel: r1, timing: t1}, {id: 'day04', reel: r2, timing: t2}, {id: 'day05', reel: r3, timing: t3}, {id: 'day08', reel: r4, timing: t4}];

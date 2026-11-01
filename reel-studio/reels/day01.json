@@ -1,0 +1,113 @@
+{
+ "id": "day01",
+ "day": 1,
+ "template": "tips",
+ "voice": "voice/day01.mp3",
+ "music": "music/upbeat-tech.mp3",
+ "hook": "1 hour back today. Want 5 more every week?",
+ "hookHighlight": "5 more",
+ "cta": {
+  "text": "Follow for Day 2",
+  "sub": "The 3-second website test"
+ },
+ "cover": {
+  "kicker": "Day 1 of 30",
+  "title": "3 jobs to",
+  "highlight": "stop doing",
+  "after": "by hand",
+  "face": "presenting"
+ },
+ "beats": [
+  {
+   "at": "So the clocks went back",
+   "title": "Clocks went back",
+   "prop": {
+    "type": "stat",
+    "value": "+1 hr",
+    "label": "you got one hour back today",
+    "icon": "clock"
+   }
+  },
+  {
+   "at": "But be honest",
+   "title": "Hours lost last week?",
+   "prop": {
+    "type": "chips",
+    "items": [
+     "Replying to messages",
+     "Sending reminders",
+     "Chasing reviews"
+    ],
+    "icon": "hourglass"
+   }
+  },
+  {
+   "at": "I'm Sudip",
+   "title": "Day 1 of 30",
+   "prop": {
+    "type": "intro",
+    "name": "Sudip Tarafdar",
+    "role": "Founder, Orbirise",
+    "text": "One video a day to get more clients and your time back"
+   }
+  },
+  {
+   "at": "So here are three jobs",
+   "title": "3 jobs to stop doing by hand",
+   "sfx": "impact"
+  },
+  {
+   "at": "One.",
+   "number": "01",
+   "prop": {
+    "type": "step",
+    "icon": "message-square-reply",
+    "title": "Instant reply",
+    "text": "Every enquiry gets a friendly reply, even when you're busy"
+   }
+  },
+  {
+   "at": "Two.",
+   "number": "02",
+   "prop": {
+    "type": "step",
+    "icon": "bell-ring",
+    "title": "Appointment reminder",
+    "text": "Sent the day before. Fewer no-shows"
+   }
+  },
+  {
+   "at": "Three.",
+   "number": "03",
+   "prop": {
+    "type": "step",
+    "icon": "star",
+    "title": "Review request",
+    "text": "Goes out on its own when the job is done"
+   }
+  },
+  {
+   "at": "Set these up once",
+   "title": "Set up once",
+   "prop": {
+    "type": "checklist",
+    "items": [
+     "Instant reply",
+     "Appointment reminder",
+     "Review request"
+    ],
+    "preDone": 0
+   }
+  },
+  {
+   "at": "Follow me",
+   "title": "Follow for 30 days",
+   "prop": {
+    "type": "cta",
+    "text": "Tomorrow: the 3-second website test",
+    "icon": "calendar-days"
+   }
+  }
+ ],
+ "script": "[curious] So the clocks went back last night... and we all got one extra hour. Nice, right?\n[sighs] But be honest. How many hours did you lose LAST week... doing the same boring jobs again and again? Replying to messages. Sending reminders. Chasing people for reviews.\n[warmly] I'm Sudip, and this month I'm posting one video every day to help small business owners get more clients... and get their time back.\n[confidently] So here are three jobs you can stop doing by hand.\nOne. When someone sends you an enquiry, they get a friendly reply straight away... even when you're busy.\nTwo. Every client gets a reminder the day before their appointment. Fewer no-shows.\nThree. When a job's finished... a review request goes out on its own.\n[excited] Set these up once, and they work for you every single day.\nFollow me for the next thirty days. Tomorrow, I'm going to test your website... in three seconds."
+}

@@ -1,0 +1,168 @@
+{
+ "id": "day05",
+ "day": 5,
+ "template": "faces",
+ "voice": "voice/day05.mp3",
+ "music": "music/playful.mp3",
+ "hook": "5 things to burn from your website",
+ "hookHighlight": "burn",
+ "cta": {
+  "text": "Follow for Day 6",
+  "sub": "SEO that brings clients"
+ },
+ "cover": {
+  "kicker": "Day 5 · Bonfire Night",
+  "title": "5 things to",
+  "highlight": "BURN",
+  "after": "from your website",
+  "face": "announce"
+ },
+ "beats": [
+  {
+   "at": "It's Bonfire Night",
+   "face": "announce",
+   "headline": "Bonfire Night",
+   "prop": {
+    "type": "card",
+    "icon": "flame",
+    "title": "Let's burn a few things",
+    "text": "From your website"
+   }
+  },
+  {
+   "at": "Number one",
+   "face": "smug",
+   "number": "1",
+   "prop": {
+    "type": "burn",
+    "text": "Welcome to our website"
+   }
+  },
+  {
+   "at": "Nobody has ever hired",
+   "face": "laughing",
+   "number": "1",
+   "prop": {
+    "type": "card",
+    "icon": "message-square-text",
+    "title": "Say what you do",
+    "text": "Not 'welcome'"
+   }
+  },
+  {
+   "at": "Number two",
+   "face": "skeptical",
+   "number": "2",
+   "prop": {
+    "type": "burn",
+    "text": "Auto-sliding banner",
+    "icon": "gallery-horizontal"
+   }
+  },
+  {
+   "at": "Pick your best message",
+   "face": "presenting",
+   "number": "2",
+   "prop": {
+    "type": "card",
+    "icon": "pin",
+    "title": "One message",
+    "text": "Keep it still"
+   }
+  },
+  {
+   "at": "Number three",
+   "face": "facepalm",
+   "number": "3",
+   "prop": {
+    "type": "burn",
+    "text": "Handshake stock photo",
+    "icon": "handshake"
+   }
+  },
+  {
+   "at": "Use a real photo",
+   "face": "pointing-you",
+   "number": "3",
+   "prop": {
+    "type": "card",
+    "icon": "camera",
+    "title": "A real photo of YOU",
+    "text": "People buy from people"
+   }
+  },
+  {
+   "at": "Number four",
+   "face": "mind-blown",
+   "number": "4",
+   "prop": {
+    "type": "burn",
+    "text": "10-box contact form",
+    "icon": "list"
+   }
+  },
+  {
+   "at": "Ask for a name",
+   "face": "ok",
+   "number": "4",
+   "prop": {
+    "type": "checklist",
+    "items": [
+     "Name",
+     "Email",
+     "One question"
+    ]
+   }
+  },
+  {
+   "at": "And number five",
+   "face": "skeptical",
+   "number": "5",
+   "prop": {
+    "type": "burn",
+    "text": "Submit",
+    "button": true
+   }
+  },
+  {
+   "at": "to what",
+   "face": "shrug",
+   "number": "5"
+  },
+  {
+   "at": "Say what they get",
+   "face": "confident",
+   "number": "5",
+   "prop": {
+    "type": "button",
+    "text": "Get my free quote"
+   }
+  },
+  {
+   "at": "Fix these",
+   "face": "big-smile",
+   "prop": {
+    "type": "stat",
+    "value": "More",
+    "label": "visitors will contact you",
+    "icon": "trending-up"
+   }
+  },
+  {
+   "at": "Be honest",
+   "face": "pointing-you",
+   "prop": {
+    "type": "numbers",
+    "items": [
+     "1",
+     "2",
+     "3",
+     "4",
+     "5"
+    ],
+    "label": "Which one is on your site?"
+   }
+  }
+ ],
+ "script": "[excited] It's Bonfire Night here in the UK... so let's burn a few things. From your website!\n[mischievously] Number one. \"Welcome to our website.\" [laughs] Nobody has ever hired a business because of that line. Tell people what you do instead.\nNumber two. The banner that slides on its own. People don't wait for slide three. Pick your best message, and keep it still.\nNumber three. The stock photo of two people shaking hands. Use a real photo of YOU. People buy from people.\nNumber four. The contact form with ten boxes. Ask for a name, an email, and one question. That's enough.\n[sarcastic] And number five. The button that just says \"Submit.\" Submit... to what?\n[confidently] Say what they get. Like \"Get my free quote.\"\n[warmly] Fix these, and more visitors will actually contact you.\nBe honest... which number is on your website right now? Comment it below."
+}

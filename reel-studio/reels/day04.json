@@ -1,0 +1,243 @@
+{
+ "id": "day04",
+ "day": 4,
+ "template": "toon",
+ "voice": "voice/day04.mp3",
+ "music": "music/playful.mp3",
+ "hook": "Enquiries but no clients?",
+ "hookHighlight": "no clients",
+ "cta": {
+  "text": "Follow for Day 5",
+  "sub": "Website mistakes to burn"
+ },
+ "cover": {
+  "kicker": "Day 4 · Speed to lead",
+  "title": "It's not your price.",
+  "highlight": "It's your SPEED.",
+  "pose": "pointing"
+ },
+ "beats": [
+  {
+   "at": "You get enquiries",
+   "pose": "thinking",
+   "eyebrow": "you get enquiries...",
+   "headline": "But no clients?",
+   "prop": {
+    "type": "phone",
+    "screen": "notifications",
+    "items": [
+     {
+      "app": "Website form",
+      "title": "New enquiry",
+      "text": "Hi, are you free this week?"
+     },
+     {
+      "app": "Instagram",
+      "title": "New message",
+      "text": "How much for a quote?"
+     },
+     {
+      "app": "Email",
+      "title": "Quote request",
+      "text": "Can you call me back?"
+     }
+    ]
+   }
+  },
+  {
+   "at": "Here's the thing",
+   "pose": "explaining",
+   "eyebrow": "it's often not your",
+   "headline": "Price",
+   "prop": {
+    "type": "vs",
+    "left": {
+     "label": "Price",
+     "icon": "tag"
+    },
+    "right": {
+     "label": "Speed",
+     "icon": "zap"
+    },
+    "winner": "right"
+   }
+  },
+  {
+   "at": "It's your SPEED",
+   "pose": "pointing",
+   "eyebrow": "it's your",
+   "headline": "SPEED",
+   "sfx": "impact",
+   "prop": {
+    "type": "stat",
+    "value": "SPEED",
+    "label": "wins the client",
+    "icon": "zap"
+   }
+  },
+  {
+   "at": "Think about it",
+   "pose": "smile",
+   "eyebrow": "you message",
+   "headline": "3 plumbers",
+   "prop": {
+    "type": "icons",
+    "items": [
+     {
+      "icon": "wrench",
+      "label": "Plumber A"
+     },
+     {
+      "icon": "wrench",
+      "label": "Plumber B"
+     },
+     {
+      "icon": "wrench",
+      "label": "Plumber C"
+     }
+    ]
+   }
+  },
+  {
+   "at": "Who gets the job",
+   "pose": "shocked",
+   "eyebrow": "who gets the job?",
+   "headline": "The first reply",
+   "prop": {
+    "type": "icons",
+    "items": [
+     {
+      "icon": "trophy",
+      "label": "Replied first",
+      "win": true
+     },
+     {
+      "icon": "clock",
+      "label": "2 hrs later"
+     },
+     {
+      "icon": "clock",
+      "label": "Next day"
+     }
+    ]
+   }
+  },
+  {
+   "at": "Harvard Business Review",
+   "pose": "explaining",
+   "eyebrow": "Harvard Business Review",
+   "headline": "Reply in 1 hour",
+   "prop": {
+    "type": "stat",
+    "value": "< 1 hr",
+    "label": "reply fast and you're far more likely to win",
+    "icon": "timer"
+   }
+  },
+  {
+   "at": "But you can't sit",
+   "pose": "thinking",
+   "eyebrow": "but you can't",
+   "headline": "Wait by your phone",
+   "prop": {
+    "type": "card",
+    "icon": "smartphone",
+    "title": "All day on your phone?",
+    "text": "Not realistic."
+   }
+  },
+  {
+   "at": "So let a simple system",
+   "pose": "pointing",
+   "eyebrow": "so let a",
+   "headline": "System do it",
+   "prop": {
+    "type": "card",
+    "icon": "workflow",
+    "title": "Simple system",
+    "text": "Works while you work"
+   }
+  },
+  {
+   "at": "When someone fills in your form",
+   "pose": "explaining",
+   "eyebrow": "step 1",
+   "headline": "Instant email",
+   "prop": {
+    "type": "phone",
+    "screen": "notifications",
+    "items": [
+     {
+      "app": "Email",
+      "title": "Thanks for your enquiry!",
+      "text": "Pick a time that suits you → Book now"
+     }
+    ]
+   }
+  },
+  {
+   "at": "They get a quick text",
+   "pose": "smile",
+   "eyebrow": "step 2",
+   "headline": "Quick text",
+   "prop": {
+    "type": "phone",
+    "screen": "chat",
+    "messages": [
+     {
+      "from": "me",
+      "text": "Hi Sam! Got your message. I'll call you in 10 minutes."
+     },
+     {
+      "from": "them",
+      "text": "Wow, that was fast. Thanks!"
+     }
+    ]
+   }
+  },
+  {
+   "at": "And YOU get an alert",
+   "pose": "pointing",
+   "eyebrow": "step 3",
+   "headline": "You get an alert",
+   "prop": {
+    "type": "phone",
+    "screen": "notifications",
+    "items": [
+     {
+      "app": "Lead alert",
+      "title": "New lead: Sam",
+      "text": "Call now while they're interested"
+     }
+    ]
+   }
+  },
+  {
+   "at": "You don't have to be faster",
+   "pose": "thumbs-up",
+   "eyebrow": "you don't have to be faster",
+   "headline": "Your system is",
+   "prop": {
+    "type": "checklist",
+    "items": [
+     "Instant email",
+     "Quick text",
+     "Alert for you"
+    ],
+    "preDone": 3
+   }
+  },
+  {
+   "at": "Save this",
+   "pose": "pointing",
+   "eyebrow": "save this and",
+   "headline": "Follow",
+   "prop": {
+    "type": "cta",
+    "text": "Next week: the cheap tools",
+    "icon": "bookmark"
+   }
+  }
+ ],
+ "script": "[curious] You get enquiries... but most of them never turn into clients. Sound familiar?\n[seriously] Here's the thing. It's often not your price. It's your SPEED.\nThink about it. When you need a plumber, you message three of them. Who gets the job? [laughs] Usually the one who replies first.\nHarvard Business Review looked into this. Businesses that reply within an hour are far more likely to win the customer.\n[sighs] But you can't sit by your phone all day. So let a simple system do it.\n[confidently] When someone fills in your form... they instantly get a friendly email with your booking link. They get a quick text saying you'll call them soon. And YOU get an alert... so you can call while they're still interested.\n[warmly] You don't have to be faster. Your system does.\nSave this... and follow. Next week, I'll show you the cheap tools that do it."
+}

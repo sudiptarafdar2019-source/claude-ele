@@ -1,0 +1,184 @@
+{
+ "id": "day02",
+ "day": 2,
+ "template": "hands",
+ "voice": "voice/day02.mp3",
+ "music": "music/upbeat-tech.mp3",
+ "hook": "Your website has 3 seconds",
+ "hookHighlight": "3 seconds",
+ "cta": {
+  "text": "Comment FIX",
+  "sub": "I'll tell you one change for your homepage"
+ },
+ "cover": {
+  "kicker": "Day 2 · Website test",
+  "title": "Your website has",
+  "highlight": "3 seconds",
+  "after": "Does it pass?",
+  "hand": "point-up"
+ },
+ "beats": [
+  {
+   "at": "Do people visit",
+   "write": "Visit... then leave?",
+   "draw": "arrow",
+   "prop": {
+    "type": "phone",
+    "screen": "website",
+    "site": {
+     "name": "Your business",
+     "headline": "Welcome to our website",
+     "sub": "We are passionate about excellence",
+     "button": "Submit"
+    }
+   }
+  },
+  {
+   "at": "Here's what's happening",
+   "write": "3 seconds",
+   "draw": "circle",
+   "prop": {
+    "type": "countdown",
+    "from": 3
+   }
+  },
+  {
+   "at": "they're asking three questions",
+   "write": "3 questions",
+   "draw": "underline",
+   "prop": {
+    "type": "checklist",
+    "items": [
+     "What do you do?",
+     "Is this for me?",
+     "What do I do next?"
+    ],
+    "reveal": "all",
+    "plain": true
+   }
+  },
+  {
+   "at": "Question one",
+   "write": "What do you do?",
+   "draw": "underline"
+  },
+  {
+   "at": "So please",
+   "write": "Don't write this",
+   "draw": "cross",
+   "prop": {
+    "type": "phone",
+    "screen": "website",
+    "site": {
+     "name": "Bright Books",
+     "headline": "Welcome to our website",
+     "sub": "Excellence in every number",
+     "button": "Submit"
+    },
+    "crossHeadline": true
+   }
+  },
+  {
+   "at": "Say it simply",
+   "write": "Say it simply",
+   "draw": "check",
+   "prop": {
+    "type": "phone",
+    "screen": "website",
+    "site": {
+     "name": "Bright Books",
+     "headline": "We help restaurants in Texas with their bookkeeping",
+     "sub": "Monthly books, done for you",
+     "button": "Book a free call"
+    },
+    "highlight": "headline"
+   }
+  },
+  {
+   "at": "Question two",
+   "write": "Is this for me?",
+   "draw": "underline"
+  },
+  {
+   "at": "Say who you help",
+   "write": "Who you help, at the top",
+   "draw": "arrow",
+   "prop": {
+    "type": "phone",
+    "screen": "website",
+    "site": {
+     "name": "Bright Books",
+     "tag": "For restaurant owners",
+     "headline": "We help restaurants in Texas with their bookkeeping",
+     "sub": "Monthly books, done for you",
+     "button": "Book a free call"
+    },
+    "highlight": "tag"
+   }
+  },
+  {
+   "at": "Question three",
+   "write": "What do I do next?",
+   "draw": "underline"
+  },
+  {
+   "at": "Give them ONE clear button",
+   "write": "ONE clear button",
+   "draw": "box",
+   "prop": {
+    "type": "phone",
+    "screen": "website",
+    "site": {
+     "name": "Bright Books",
+     "tag": "For restaurant owners",
+     "headline": "We help restaurants in Texas with their bookkeeping",
+     "sub": "Monthly books, done for you",
+     "button": "Book a free call"
+    },
+    "highlight": "button",
+    "tap": true
+   }
+  },
+  {
+   "at": "Now try this",
+   "write": "The phone test",
+   "draw": "underline",
+   "prop": {
+    "type": "phone",
+    "screen": "website",
+    "site": {
+     "name": "Your homepage",
+     "headline": "Your headline here",
+     "sub": "Only the first screen counts",
+     "button": "Your button"
+    },
+    "firstScreen": true
+   }
+  },
+  {
+   "at": "Can a stranger",
+   "write": "Can a stranger answer?",
+   "draw": "none",
+   "prop": {
+    "type": "checklist",
+    "items": [
+     "What do you do?",
+     "Is this for me?",
+     "What do I do next?"
+    ]
+   }
+  },
+  {
+   "at": "If not",
+   "write": "That's why they leave",
+   "draw": "underline"
+  },
+  {
+   "at": "Comment",
+   "write": "Comment FIX",
+   "draw": "box",
+   "hand": "thumbs-up"
+  }
+ ],
+ "script": "[curious] Do people visit your website... and then just leave?\n[seriously] Here's what's happening. A new visitor gives your website about three seconds. And in those three seconds... they're asking three questions. If they can't find the answers, they're gone.\nQuestion one. \"What do you do?\" So please... don't write \"Welcome to our website.\" Say it simply. \"We help restaurants in Texas with their bookkeeping.\"\nQuestion two. \"Is this for me?\" Say who you help, right at the top.\nQuestion three. \"What do I do next?\" Give them ONE clear button. Like \"Book a free call.\"\n[mischievously] Now try this. Open your homepage on your phone. Only look at the first screen. Can a stranger answer all three questions?\n[softly] If not... that's why people leave.\n[warmly] Comment \"FIX\", and I'll tell you the one thing I'd change on your homepage."
+}
