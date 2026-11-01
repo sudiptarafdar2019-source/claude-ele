@@ -102,6 +102,9 @@ To preview and scrub through a reel while you edit it, run `npm run studio` and 
 
 ---
 
+### Board styles (hand explainer)
+Add `"board": "white"` (default), `"chalk"` (green chalkboard), `"paper"` (notebook) or `"blueprint"` to the reel file. See `catalog/hand-board-styles.jpg`. The hand draws each picture line by line and colours it in, some infographics are painted across in one sweep, and the board slides or gets wiped with an eraser between drawings.
+
 ## 4. What you can put in a beat
 
 | Field | Used by | What it does |
@@ -115,6 +118,8 @@ To preview and scrub through a reel while you edit it, run `npm run studio` and 
 | `headline`, `eyebrow`, `title`, `number` | (cover only) | No longer shown on the video (visual-only style). Safe to leave in old reel files |
 | `pose` | toon | Cartoon pose: `smile`, `thinking`, `pointing`, `shocked`, `thumbs-up`, `explaining` |
 | `face` | faces, tips | Your expression (list below). Leave it out and the tone tag picks one for you |
+| `show` | hands | The drawing(s) for this line. Storyboard drawings: `visit-leave`, `three-seconds`, `three-questions`, `gone`, `q-what`, `bad-welcome`, `clear-headline`, `q-for-me`, `who-top`, `q-next`, `one-button`, `phone-test`, `stranger-check`, `leave`, `comment-fix`. General: `website`, `customer`, `visit`, `call`, `message`, `money`, `search`, `grow`, `time`, `idea`, `question`, `review`. `me-<face>` (e.g. `me-smug`) slides in a polaroid of you with doodles around it; use it 2 to 4 times per reel |
+| `photo`, `photoAt` | hands | A polaroid of your face added to that drawing's corner (`left`/`right`) |
 | `write`, `draw` | hands | No longer written on screen. The hand sketches the picture for each moment and picks a circle/underline/tick/cross mark itself |
 | `hand` | hands | `thumbs-up` pops a thumbs-up hand in |
 | `shot` | podcast | Ignored now: the camera angle changes on its own every 1-2 seconds |
