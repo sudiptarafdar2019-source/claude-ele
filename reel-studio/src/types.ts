@@ -3,7 +3,7 @@ export type Timing = {duration: number; words: Word[]};
 export type Prop = {type: string; [k: string]: any};
 export type Beat = {
   at: string; pose?: string; face?: string; eyebrow?: string; headline?: string; title?: string;
-  number?: string; prop?: Prop; sfx?: string; write?: string; draw?: string; hand?: string;
+  number?: string; show?: string | string[]; prop?: Prop; sfx?: string; write?: string; draw?: string; hand?: string;
   shot?: string; warm?: boolean;
   /** story template: who is on screen, who talks, bubble text, background */
   cast?: {who: string; do?: string; mood?: string}[]; speaker?: string; say?: string; think?: string; scene?: string;

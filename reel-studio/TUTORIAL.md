@@ -107,6 +107,7 @@ To preview and scrub through a reel while you edit it, run `npm run studio` and 
 | Field | Used by | What it does |
 |---|---|---|
 | `at` | all | Words where this shot starts (required) |
+| `show` | faces, tips | The animated scene behind your photo. One name, or a list that splits the beat, e.g. `["visitor-leaves","say-what-you-do"]`. Scenes: `bonfire`, `burn-welcome`, `burn-slider`, `burn-stock`, `burn-form`, `burn-button`, `visitor-leaves`, `say-what-you-do`, `one-message`, `real-photo`, `people-buy`, `short-form`, `what-button`, `good-button`, `more-contacts`, `comment`, `website`, `customer`, `visit`, `call`, `message`, `money`, `search`, `review`, `wait`, `grow`. Leave it out and a scene is picked from what you say ("website" shows a webpage, "customer" shows a customer walking in, "visiting" shows someone walking into a shop) |
 | `cast` | story | Who is on screen: `[{"who":"sudip","do":"point","mood":"happy"},{"who":"maya","do":"phone","mood":"worried"}]` (1 to 3 characters, list below) |
 | `say`, `think` | story | Turns on a speech bubble (`say`) or thought bubble (`think`). The bubble shows the animated picture, not the words |
 | `speaker` | story | Who lip-syncs to the voice (default `sudip`). Use `"none"` for narration with nobody talking |
