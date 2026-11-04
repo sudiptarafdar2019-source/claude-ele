@@ -25,7 +25,7 @@ import {
 
 const ENTER = 9, EXIT = 10;
 
-type Ctx = {f: number; from: number; to: number; w: (p: string, n?: number) => number; e: (p: string) => number; ws: (p: string) => CueWord[]};
+type Ctx = {f: number; from: number; to: number; p: any; q: (word: string, n?: number) => number; w: (p: string, n?: number) => number; e: (p: string) => number; ws: (p: string) => CueWord[]};
 
 const clean = (s: string) => s.replace(/\.\.\./g, '').replace(/[“”"]/g, '').replace(/,$/, '');
 
@@ -40,8 +40,11 @@ const makeCtx = (timing: Timing, b: ResolvedBeat, f: number): Ctx => {
     return -1;
   };
   const fr = (s: number) => Math.round(s * FPS);
+  const P: any = (b as any).params ?? {};
+  const w = (p: string, n = 1) => { const i = find(p, n); return i < 0 ? b.from : fr(timing.words[i].start); };
   return {
-    f, from: b.from, to: b.to,
+    f, from: b.from, to: b.to, p: P,
+    q: (word, n = 1) => w(P.cues?.[word] ?? word, n),
     w: (p, n = 1) => { const i = find(p, n); return i < 0 ? b.from : fr(timing.words[i].start); },
     e: (p) => { const t = p.split(/\s+/).filter(Boolean); const i = find(p); return i < 0 ? b.to : fr(timing.words[i + t.length - 1].end); },
     ws: (p) => {
@@ -66,7 +69,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // Do people visit your website and then just leave?
   visit: ({c}) => {
     const {f} = c;
-    const tP = c.w('people'), tV = c.w('visit'), tS = c.w('website'), tJ = c.w('just'), tL = c.w('leave');
+    const tP = c.q('people'), tV = c.q('visit'), tS = c.q('website'), tJ = c.q('just'), tL = c.q('leave');
     const ph = pop(f, c.from);
     const door = pop(f, tL - 8);
     const xs = [250, 470, 690];
@@ -95,7 +98,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   happening: ({c}) => {
     const {f} = c;
     const k = pop(f, c.from);
-    const tH = c.w('happening');
+    const tH = c.q('happening');
     return (
       <>
         <Spot x={540} y={700} r={480} color={C.blue} f={f} from={c.from} />
@@ -109,7 +112,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // A new visitor gives your website about three seconds.
   'three-seconds': ({c}) => {
     const {f} = c;
-    const tN = c.w('new'), tS = c.w('website'), t3 = c.w('three'), tSec = c.w('seconds');
+    const tN = c.q('new'), tS = c.q('website'), t3 = c.q('three'), tSec = c.q('seconds');
     const vis = walkTo(f, tN - 6, tN + 14, -200, 290);
     const ph = pop(f, tS - 3);
     const sw = pop(f, t3 - 3);
@@ -127,7 +130,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // And in those three seconds... they're asking three questions.
   'three-questions': ({c}) => {
     const {f} = c;
-    const tA = c.w('asking'), t3 = c.w('three', 2), tQ = c.w('questions');
+    const tA = c.q('asking'), t3 = c.q('three', 2), tQ = c.q('questions');
     const end = tQ + 18;
     const p = 0.88 * (1 - ease(f, c.from, end, 0, 1, (v) => v));
     const n = String(Math.max(1, Math.ceil(p * 3.4)));
@@ -149,7 +152,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // If they can't find the answers, they're GONE.
   gone: ({c}) => {
     const {f} = c;
-    const tF = c.w('find'), tA = c.w('answers'), tG = c.w('GONE');
+    const tF = c.q('find'), tA = c.q('answers'), tG = c.q('GONE');
     const ph = pop(f, c.from);
     const dash = ease(f, tG, tG + 9);
     const vx = 290 - dash * 700;
@@ -168,6 +171,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   },
 
   // Question one. "What do you do?"
+  question: ({c}) => <QuestionScene c={c} n={String(c.p.n ?? '1')} color={({blue: C.blue, gold: C.gold, sky: C.sky, green: C.green, coral: '#FF7A6B'} as any)[c.p.color ?? 'blue'] ?? C.blue} at={c.p.at ?? String(c.p.n ?? 'one')} quote={c.p.quote ?? ''} pose={c.p.pose ?? 'curious'} />,
   q1: ({c}) => <QuestionScene c={c} n="1" color={C.blue} at="one" quote="What do you do" pose="curious" />,
   // Question two. "Is this for me?"
   q2: ({c}) => <QuestionScene c={c} n="2" color={C.gold} at="two" quote="Is this for me" pose="self" />,
@@ -177,7 +181,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // So please... don't write "Welcome to our website."
   welcome: ({c}) => {
     const {f} = c;
-    const tD = c.w("don't"), tW = c.w('write'), ws = c.ws('Welcome to our website'), tEnd = c.e('Welcome to our website');
+    const tD = c.q("don't"), tW = c.q('write'), ws = c.ws(c.p.quote ?? 'Welcome to our website'), tEnd = c.e(c.p.quote ?? 'Welcome to our website');
     const ph = pop(f, c.from);
     const P = {x: 540, y: 810, w: 540};
     const strike = ease(f, tEnd + 2, tEnd + 16);
@@ -201,9 +205,10 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // Say it simply. "We help restaurants in Texas with their bookkeeping."
   simple: ({c}) => {
     const {f} = c;
-    const tSim = c.w('simply');
-    const ws = c.ws('We help restaurants in Texas with their bookkeeping');
-    const tR = c.w('restaurants'), tT = c.w('Texas'), tB = c.w('bookkeeping'), tEnd = c.e('bookkeeping');
+    const tSim = c.q('simply');
+    const ws = c.ws(c.p.quote ?? 'We help restaurants in Texas with their bookkeeping');
+    const icons: {at: string; icon: string}[] = c.p.icons ?? [{at: 'restaurants', icon: 'food'}, {at: 'Texas', icon: 'texas'}, {at: 'bookkeeping', icon: 'books'}];
+    const tR = c.q('restaurants'), tT = c.q('Texas'), tB = c.q('bookkeeping'), tEnd = c.e(ws.length ? (c.p.quote ?? 'bookkeeping').split(/\s+/).slice(-1)[0] : 'bookkeeping');
     const P = {x: 540, y: 810, w: 540};
     const oldOut = ease(f, tSim - 2, tSim + 10);
     const icon = (t: number, x: number, y: number, el: React.ReactNode, i: number) => {
@@ -213,9 +218,9 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
     const headline = (
       <div style={{position: 'relative'}}>
         <div style={{position: 'absolute', left: 0, top: 0, width: 352, opacity: 1 - oldOut, transform: `translateX(${-oldOut * 420}px)`}}>
-          <span style={{fontSize: 44}}>Welcome to our website.</span>
+          <span style={{fontSize: 44}}>{c.p.old ?? 'Welcome to our website.'}</span>
         </div>
-        <div style={{fontSize: 40}}><Spoken ws={ws} f={f} hi={['restaurants', 'texas', 'bookkeeping']} /></div>
+        <div style={{fontSize: 40}}><Spoken ws={ws} f={f} hi={(c.p.highlight ?? icons.map((i) => i.at)).map((h: string) => h.toLowerCase().replace(/[^a-z]/g, ''))} /></div>
       </div>
     );
     return (
@@ -225,9 +230,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
           <Phone w={P.w}><Site w={P.w - 32} f={f} headline={headline} strike={1 - oldOut} /></Phone>
         </At>
         <Burst x={P.x - 60} y={460} t={tSim} f={f} r={200} />
-        {icon(tR, 150, 520, <Cloche s={150} />, 0)}
-        {icon(tT, 935, 760, <TexasIcon s={160} />, 1)}
-        {icon(tB, 150, 1030, <Ledger s={160} />, 2)}
+        {icons.slice(0, 3).map((it, i) => icon(c.q(it.at), [150, 935, 150][i], [520, 760, 1030][i], ICONS[it.icon] ?? ICONS.check, i))}
         <At x={830} y={380} s={pop(f, tEnd + 4)} o={pop(f, tEnd + 4)}><CheckBadge s={140} /></At>
         <Burst x={830} y={380} t={tEnd + 6} f={f} color={C.green} />
       </>
@@ -237,7 +240,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // Say who you help, right at the top.
   who: ({c}) => {
     const {f} = c;
-    const tW = c.w('who'), tH = c.w('help'), tR = c.w('right'), tT = c.w('top');
+    const tW = c.q('who'), tH = c.q('help'), tR = c.q('right'), tT = c.q('top');
     const P = {x: 610, y: 810, w: 510};
     const top = sitePt(P.x, P.y, P.w, 120, 105);
     const chef = pop(f, tH - 4);
@@ -257,7 +260,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // Give them ONE clear button.
   'one-button': ({c}) => {
     const {f} = c;
-    const tO = c.w('ONE'), tC = c.w('clear'), tB = c.w('button');
+    const tO = c.q('ONE'), tC = c.q('clear'), tB = c.q('button');
     const P = {x: 540, y: 810, w: 540};
     const btn = sitePt(P.x, P.y, P.w, 174, 418);
     return (
@@ -275,8 +278,8 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // Like "Book a free call."
   book: ({c}) => {
     const {f} = c;
-    const ws = c.ws('Book a free call').map((w) => ({...w, text: w.text.replace(/\.$/, '')}));
-    const tEnd = c.e('Book a free call');
+    const ws = c.ws(c.p.quote ?? 'Book a free call').map((w) => ({...w, text: w.text.replace(/\.$/, '')}));
+    const tEnd = c.e(c.p.quote ?? 'Book a free call');
     const P = {x: 540, y: 810, w: 540};
     const btn = sitePt(P.x, P.y, P.w, 174, 418);
     const tap = tEnd + 5;
@@ -294,12 +297,13 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   },
 
   // [mischievously] Now try this.  -> Sudip, face moment 1
-  'face-try': ({c}) => <FaceMoment c={c} face="idea" side="right" />,
+  'face-try': ({c}) => <FaceMoment c={c} face={c.p.face ?? 'idea'} side={c.p.side ?? 'right'} />,
+  face: ({c}) => <FaceMoment c={c} face={c.p.face ?? 'idea'} side={c.p.side ?? 'right'} />,
 
   // Open your homepage on your phone. Only look at the first screen.
   'phone-test': ({c}) => {
     const {f} = c;
-    const tO = c.w('Open'), tH = c.w('homepage'), tP = c.w('phone'), tOn = c.w('Only'), tF = c.w('first');
+    const tO = c.q('Open'), tH = c.q('homepage'), tP = c.q('phone'), tOn = c.q('Only'), tF = c.q('first');
     const P = {x: 540, y: 810, w: 540};
     const ph = pop(f, tO - 4);
     const wig = Math.sin((f - tP) / 2.5) * 4 * (1 - ease(f, tP, tP + 14)) * (f > tP ? 1 : 0);
@@ -320,7 +324,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // Can a stranger answer all three questions?
   stranger: ({c}) => {
     const {f} = c;
-    const tS = c.w('stranger'), tA = c.w('answer'), tAll = c.w('all'), tT = c.w('three'), tQ = c.w('questions');
+    const tS = c.q('stranger'), tA = c.q('answer'), tAll = c.q('all'), tT = c.q('three'), tQ = c.q('questions');
     const k = pop(f, tS - 4);
     const qs = [{x: 250, y: 600, t: tA}, {x: 540, y: 500, t: tAll}, {x: 830, y: 600, t: tT}];
     return (
@@ -339,7 +343,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // [softly] If not... that's why people leave.
   leave: ({c}) => {
     const {f} = c;
-    const tN = c.w('not'), tWhy = c.w('why'), tP = c.w('people'), tL = c.w('leave');
+    const tN = c.q('not'), tWhy = c.q('why'), tP = c.q('people'), tL = c.q('leave');
     const qs = [{x: 250, y: 600}, {x: 540, y: 500}, {x: 830, y: 600}];
     const door = pop(f, tWhy - 4);
     return (
@@ -371,15 +375,16 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
   // [warmly] Comment "FIX", and I'll tell you the one thing I'd change on your homepage.  -> Sudip, face moment 2
   comment: ({c}) => {
     const {f} = c;
-    const tC = c.w('Comment'), tFix = c.w('FIX'), tT = c.w('tell'), tCh = c.w('change'), tH = c.w('homepage');
+    const KW: string = c.p.word ?? 'FIX';
+    const tC = c.q('Comment'), tFix = c.q(KW), tT = c.q('tell'), tCh = c.q('change'), tH = c.q('homepage');
     const card = pop(f, tC - 2);
-    const letters = 'FIX'.slice(0, Math.max(0, Math.min(3, Math.floor((f - tFix + 2) / 3) + 1)));
+    const letters = KW.toUpperCase().slice(0, Math.max(0, Math.min(KW.length, Math.floor((f - tFix + 2) / 3) + 1)));
     const send = tFix + 16;
     const reply = pop(f, tT - 2);
     const mini = pop(f, tCh - 4);
     return (
       <>
-        <FaceMoment c={c} face="thumbs-up" side="left" bare />
+        <FaceMoment c={c} face={c.p.face ?? 'thumbs-up'} side="left" bare />
         <At x={560} y={330} s={sx(card)} o={card}>
           <div style={{width: 900, height: 170, borderRadius: 40, background: '#fff', boxShadow: '0 30px 70px rgba(10,22,51,0.22)', display: 'flex', alignItems: 'center', gap: 26, padding: '0 30px', boxSizing: 'border-box'}}>
             <svg width={96} height={96} viewBox="0 0 30 30"><circle cx={15} cy={15} r={15} fill="#FF7A6B" /><circle cx={15} cy={12} r={6} fill="#FADFCC" /><path d="M4 27 Q15 17 26 27" fill="#FADFCC" /></svg>
@@ -418,7 +423,7 @@ const SCENES: Record<string, React.FC<{c: Ctx}>> = {
 /** A big numbered question: badge, our visitor, and the question in a bubble word by word. */
 const QuestionScene: React.FC<{c: Ctx; n: string; color: string; at: string; quote: string; pose: 'curious' | 'self' | 'lost'}> = ({c, n, color, at, quote, pose}) => {
   const {f} = c;
-  const tN = Math.max(c.from, c.w(at) - 4);
+  const tN = Math.max(c.from, c.q(at) - 4);
   const ws = c.ws(quote);
   const b = pop(f, tN);
   const bub = pop(f, (ws[0]?.f ?? c.from) - 5);
@@ -456,6 +461,18 @@ const FaceMoment: React.FC<{c: Ctx; face: string; side: 'left' | 'right'; bare?:
   );
 };
 
+const ICONS: Record<string, React.ReactNode> = {
+  food: <Cloche s={150} />, texas: <TexasIcon s={160} />, books: <Ledger s={160} />, calendar: <CalendarIcon s={150} />,
+  door: <DoorIcon s={120} />, wrench: <Wrench s={130} />, check: <CheckBadge s={140} />, x: <XBadge s={140} />,
+};
+/** friendlier scene names for new scripts (same scenes) */
+const ALIAS: Record<string, string> = {
+  'visitors-leave': 'visit', 'chart-drop': 'happening', timer: 'three-seconds', 'timer-questions': 'three-questions',
+  'search-fail': 'gone', 'write-headline': 'welcome', 'rewrite-headline': 'simple', 'audience-top': 'who',
+  'one-button': 'one-button', 'button-label': 'book', 'phone-check': 'phone-test', 'stranger-test': 'stranger',
+  'questions-fail': 'leave', 'comment-cta': 'comment',
+};
+
 // ======================================================================= template
 const Backdrop: React.FC<{f: number}> = ({f}) => {
   const x = 20 + Math.sin(f / 80) * 6;
@@ -474,7 +491,7 @@ export const Explainer: React.FC<TemplateProps> = ({timing, beats}) => {
       {beats.map((b) => {
         if (f < b.from - 1 || f > b.to + EXIT) return null;
         const name = (Array.isArray(b.show) ? b.show[0] : b.show) ?? 'visit';
-        const Sc = SCENES[name];
+        const Sc = SCENES[name] ?? SCENES[ALIAS[name]];
         if (!Sc) return null;
         const inn = b.index === 0 ? 1 : ease(f, b.from, b.from + ENTER);
         const out = ease(f, b.to, b.to + EXIT);
@@ -510,7 +527,7 @@ export const explainerSfx = (beats: ResolvedBeat[], timing: Timing): Sfx[] => {
   for (const b of beats) {
     const name = (Array.isArray(b.show) ? b.show[0] : b.show) ?? '';
     const c = makeCtx(timing, b, 0);
-    for (const [w, s] of SFX_WORDS[name] ?? []) out.push({f: c.w(w), src: s, vol: 0.4});
+    for (const [w, s] of SFX_WORDS[name] ?? SFX_WORDS[ALIAS[name]] ?? []) out.push({f: c.q(w), src: s, vol: 0.4});
   }
   return out;
 };
