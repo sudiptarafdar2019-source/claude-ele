@@ -1,0 +1,93 @@
+{
+ "id": "websiteleave",
+ "template": "explainer",
+ "voice": "voice/websiteleave.mp3",
+ "music": "music/upbeat-tech.mp3",
+ "hook": "Why visitors leave your website",
+ "cta": {
+  "text": "Comment FIX",
+  "sub": "I'll tell you the one thing I'd change"
+ },
+ "cover": {
+  "kicker": "Website check",
+  "title": "Why visitors",
+  "highlight": "leave",
+  "after": "in 3 seconds",
+  "face": "shocked"
+ },
+ "script": "[curious] Do people visit your website and then just leave? [seriously] Here's what's happening. A new visitor gives your website about three seconds. And in those three seconds...  they're asking three questions. If they can't find the answers, they're GONE. Question one. \"What do you do?\" So please...  don't write \"Welcome to our website.\" Say it simply. \"We help restaurants in Texas with their bookkeeping.\" Question two. \"Is this for me?\" Say who you help, right at the top. Question three. \"What do I do next?\" Give them ONE clear button. Like \"Book a free call.\" [mischievously] Now try this. Open your homepage on your phone. Only look at the first screen. Can a stranger answer all three questions? [softly] If not... that's why people leave. [warmly] Comment \"FIX\", and I'll tell you the one thing I'd change on your homepage.",
+ "beats": [
+  {
+   "at": "Do people visit",
+   "show": "visit"
+  },
+  {
+   "at": "Here's what's happening",
+   "show": "happening"
+  },
+  {
+   "at": "A new visitor",
+   "show": "three-seconds"
+  },
+  {
+   "at": "And in those three seconds",
+   "show": "three-questions"
+  },
+  {
+   "at": "If they can't find",
+   "show": "gone"
+  },
+  {
+   "at": "Question one",
+   "show": "q1"
+  },
+  {
+   "at": "So please",
+   "show": "welcome"
+  },
+  {
+   "at": "Say it simply",
+   "show": "simple"
+  },
+  {
+   "at": "Question two",
+   "show": "q2"
+  },
+  {
+   "at": "Say who you help",
+   "show": "who"
+  },
+  {
+   "at": "Question three",
+   "show": "q3"
+  },
+  {
+   "at": "Give them ONE",
+   "show": "one-button"
+  },
+  {
+   "at": "Like Book",
+   "show": "book"
+  },
+  {
+   "at": "Now try this",
+   "show": "face-try"
+  },
+  {
+   "at": "Open your homepage",
+   "show": "phone-test"
+  },
+  {
+   "at": "Can a stranger",
+   "show": "stranger"
+  },
+  {
+   "at": "If not",
+   "show": "leave"
+  },
+  {
+   "at": "Comment FIX",
+   "show": "comment"
+  }
+ ]
+}
